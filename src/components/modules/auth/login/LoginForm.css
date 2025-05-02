@@ -1,0 +1,15 @@
+.login-form {
+    position: relative;
+}
+
+.login-form::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    border-radius: 20px;
+    height: calc(100% + 10px);
+    width: calc(100% + 10px);
+    background-color: hsl(var(--it-400));
+    z-index: -1;
+}

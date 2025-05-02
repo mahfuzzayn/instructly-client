@@ -39,15 +39,14 @@ export function AppSidebar({
             },
             {
                 title: "Subjects",
-                url: "#",
                 icon: BookOpen,
                 items: [
                     {
-                        title: "Create a Subject",
+                        title: "Create Subject",
                         url: `/${user?.role}/dashboard/subjects/create-subject`,
                     },
                     {
-                        title: "My Subjects",
+                        title: "Manage Subjects",
                         url: `/${user?.role}/dashboard/subjects`,
                     },
                 ],

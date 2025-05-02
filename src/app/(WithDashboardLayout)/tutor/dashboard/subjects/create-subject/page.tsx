@@ -1,10 +1,14 @@
-import React from 'react';
+import CreateSubjectForm from "@/components/modules/subjects/create-subject/CreateSubjectForm";
+import { getMe } from "@/services/AuthService";
+import React from "react";
 
-const CreateSubjectPage = () => {
+const CreateSubjectPage = async () => {
+    const { data: tutor } = await getMe();
+
     return (
-        <div>
-            
-        </div>
+        <>
+            <CreateSubjectForm tutor={tutor} />
+        </>
     );
 };
 

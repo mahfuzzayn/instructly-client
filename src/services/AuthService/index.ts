@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 
+import { getValidToken } from "@/lib/verifyToken";
 import { jwtDecode } from "jwt-decode";
 
 import { cookies } from "next/headers";
@@ -89,6 +90,28 @@ export const getCurrentUser = async () => {
         return decodedData;
     } else {
         return null;
+    }
+};
+
+export const getMe = async () => {
+    const token = await getValidToken();
+
+    try {
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_API}/users/me`,
+            {
+                method: "GET",
+                headers: {
+                    Authorization: token,
+                },
+            }
+        );
+
+        const result = await res.json();
+
+        return result;
+    } catch (error: any) {
+        return Error(error);
     }
 };
 

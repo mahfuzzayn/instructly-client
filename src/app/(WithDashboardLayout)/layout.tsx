@@ -11,7 +11,7 @@ import {
     SidebarProvider,
     SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { getMe } from "@/services/Tutor";
+import { getMe } from "@/services/AuthService";
 
 export default async function DashboardLayout({
     children,

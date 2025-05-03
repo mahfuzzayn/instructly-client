@@ -104,6 +104,9 @@ export const getMe = async () => {
                 headers: {
                     Authorization: token,
                 },
+                next: {
+                    tags: ["USER"],
+                },
             }
         );
 

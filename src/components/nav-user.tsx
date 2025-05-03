@@ -91,7 +91,7 @@ export function NavUser({
                         </DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <DropdownMenuGroup>
-                            <Link href={`${user?.role}/dashboard/profile`}>
+                            <Link href={`/${user?.role}/dashboard/profile`}>
                                 <DropdownMenuItem className="cursor-pointer">
                                     <Settings />
                                     Manage Profile

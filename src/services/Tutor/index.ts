@@ -2,7 +2,6 @@
 "use server";
 
 import { getValidToken } from "@/lib/verifyToken";
-import { revalidateTag } from "next/cache";
 
 export const getMySubjects = async (
     page?: string,
@@ -44,21 +43,24 @@ export const getMySubjects = async (
     }
 };
 
-export const deleteSubject = async (subjectId: string) => {
+export const updateTutorProfile = async (tutorData: FormData) => {
     const token = await getValidToken();
 
     try {
         const res = await fetch(
-            `${process.env.NEXT_PUBLIC_BASE_API}/subjects/${subjectId}/discontinue`,
+            `${process.env.NEXT_PUBLIC_BASE_API}/users/tutor/update-profile`,
             {
                 method: "PATCH",
                 headers: {
                     Authorization: token,
                 },
+                body: tutorData,
+                next: {
+                    tags: ["USER"],
+                },
             }
         );
 
-        revalidateTag("SUBJECT");
         const result = await res.json();
 
         return result;

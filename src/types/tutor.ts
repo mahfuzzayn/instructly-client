@@ -1,12 +1,15 @@
+import { IUser } from "./user";
+
 export interface ITutor {
     _id: string;
-    user: string;
+    user: IUser;
     bio: string;
     hourlyRate: number;
     profileUrl: string;
     earnings: number;
     subjects: string[];
     availability: IAvailability[];
+    bookings: string[];
     reviews: string[];
     createdAt: Date;
     updatedAt: Date;
@@ -14,7 +17,7 @@ export interface ITutor {
 
 export interface IAvailability {
     _id: string;
-    day: DaysOfWeek;
+    day: DaysOfWeek | string;
     startTime: string;
     endTime: string;
     totalHours: number;

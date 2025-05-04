@@ -220,7 +220,7 @@ const StudentProfile = ({
                             </div>
                         )}
                     />
-                    <div className="space-y-2">
+                    <div className="space-y-3">
                         <h2 className="font-bold">Subjects of Interest</h2>
                         <div className="flex flex-wrap gap-5">
                             {subjects.map((subject, index) => (

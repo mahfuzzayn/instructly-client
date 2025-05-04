@@ -20,9 +20,14 @@ import {
 } from "@/components/ui/sidebar";
 import { logout } from "@/services/AuthService";
 import Link from "next/link";
+import { protectedRoutes } from "@/constants";
+import { usePathname, useRouter } from "next/navigation";
+import { IUser } from "@/types";
 
 export function NavUser({
     user,
+    setUser,
+    setIsLoading,
 }: {
     user: {
         name?: string;
@@ -30,8 +35,22 @@ export function NavUser({
         profileUrl?: string;
         role?: string;
     } | null;
+    setUser: (user: IUser | null) => void;
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
     const { isMobile } = useSidebar();
+    const router = useRouter();
+    const pathname = usePathname();
+
+    const handleLogOut = () => {
+        logout();
+        setUser(null);
+        setIsLoading(true);
+
+        if (protectedRoutes.some((route) => pathname.match(route))) {
+            router.push("/");
+        }
+    };
 
     return (
         <SidebarMenu>
@@ -100,7 +119,7 @@ export function NavUser({
                         </DropdownMenuGroup>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem
-                            onClick={() => logout()}
+                            onClick={handleLogOut}
                             className="cursor-pointer"
                         >
                             <LogOut />

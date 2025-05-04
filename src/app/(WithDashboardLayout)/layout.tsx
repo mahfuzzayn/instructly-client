@@ -13,16 +13,16 @@ import {
 } from "@/components/ui/sidebar";
 import { getMe } from "@/services/AuthService";
 
-export default async function DashboardLayout({
+export default async function TutorDashboardLayout({
     children,
 }: {
     children: React.ReactNode;
 }) {
-    const { data: tutor } = await getMe();
+    const { data } = await getMe();
 
     const user = {
-        ...tutor.user,
-        profileUrl: tutor?.profileUrl,
+        ...data.user,
+        profileUrl: data?.profileUrl,
     };
 
     return (

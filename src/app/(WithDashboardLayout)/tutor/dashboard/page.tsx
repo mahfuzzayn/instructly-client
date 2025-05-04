@@ -4,13 +4,13 @@ import { ISubject, ITutor } from "@/types";
 import Link from "next/link";
 import React from "react";
 
-const DashboardPage = async () => {
+const TutorDashboardPage = async () => {
     const { data: tutor }: { data: ITutor } = await getMe();
     const { data: subjects }: { data: ISubject[] } = await getMySubjects();
 
     return (
-        <main className="space-y-5">
-            <section className="flex gap-5 w-full">
+        <main className="space-y-5 m-5">
+            <section className="flex flex-col md:flex-row gap-5 w-full">
                 <div className="w-full bg-it-light-primary rounded-md p-5 space-y-2">
                     <h2 className="text-2xl font-normal">Earnings</h2>
                     <p className="text-4xl font-extrabold">
@@ -43,7 +43,7 @@ const DashboardPage = async () => {
                     </ul>
                 </div>
             </section>
-            <section className="flex gap-5 w-full">
+            <section className="flex flex-col md:flex-row gap-5 w-full">
                 <div className="w-full bg-it-light-primary rounded-md p-5 space-y-2">
                     <h2 className="text-2xl font-normal">
                         <Link
@@ -83,4 +83,4 @@ const DashboardPage = async () => {
     );
 };
 
-export default DashboardPage;
+export default TutorDashboardPage;

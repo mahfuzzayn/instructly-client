@@ -109,7 +109,7 @@ const ManageSubjects = ({
     ];
 
     return (
-        <div>
+        <div className="m-5">
             <div className="flex items-center justify-between mb-4">
                 <h1 className="text-xl font-bold">Manage Subjects</h1>
                 <div className="flex items-center gap-2">

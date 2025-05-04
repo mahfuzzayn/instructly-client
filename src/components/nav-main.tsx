@@ -46,23 +46,23 @@ export function NavMain({
                         className="group/collapsible"
                     >
                         <SidebarMenuItem>
-                            <CollapsibleTrigger asChild>
-                                <SidebarMenuButton tooltip={item.title}>
-                                    {item.icon && <item.icon />}
-                                    {item.url ? (
-                                        <>
-                                            <Link href={item.url}>
+                            <Link href={item.url || "#"}>
+                                <CollapsibleTrigger asChild>
+                                    <SidebarMenuButton tooltip={item.title}>
+                                        {item.icon && <item.icon />}
+                                        {item.url ? (
+                                            <>
                                                 <span>{item.title}</span>
-                                            </Link>
-                                        </>
-                                    ) : (
-                                        <span>{item.title}</span>
-                                    )}
-                                    {item.collapsible && (
-                                        <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
-                                    )}
-                                </SidebarMenuButton>
-                            </CollapsibleTrigger>
+                                            </>
+                                        ) : (
+                                            <span>{item.title}</span>
+                                        )}
+                                        {item.collapsible && (
+                                            <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                                        )}
+                                    </SidebarMenuButton>
+                                </CollapsibleTrigger>
+                            </Link>
                             {item.collapsible && (
                                 <CollapsibleContent>
                                     <SidebarMenuSub>

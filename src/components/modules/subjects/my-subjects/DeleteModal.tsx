@@ -8,7 +8,7 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog";
-import { deleteSubject } from "@/services/Tutor";
+import { deleteSubject } from "@/services/Subject";
 import React, { Dispatch, SetStateAction } from "react";
 import { toast } from "sonner";
 

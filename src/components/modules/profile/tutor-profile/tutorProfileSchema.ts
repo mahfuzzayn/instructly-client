@@ -14,6 +14,10 @@ export const tutorProfileSchema = z.object({
     name: z.string().optional(),
     bio: z.string().optional(),
     hourlyRate: z.string().optional(),
+    location: z.object({
+        area: z.string(),
+        district: z.string(),
+    }),
     availability: z
         .array(
             z.object({

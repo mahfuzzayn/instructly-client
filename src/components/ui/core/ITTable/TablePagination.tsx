@@ -1,24 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { Button } from "../../button";
 
 const TablePagination = ({ totalPage }: { totalPage: number }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const router = useRouter();
     const pathname = usePathname();
+    const searchParams = useSearchParams();
+
+    useEffect(() => {
+        const page = parseInt(searchParams.get("page") || "1", 10);
+        if (page && page <= totalPage) {
+            setCurrentPage(page);
+        }
+    }, [searchParams, totalPage]);
+
+    const updateQuery = (page: number) => {
+        const params = new URLSearchParams(searchParams);
+        params.set("page", page.toString());
+        router.push(`${pathname}?${params.toString()}`);
+    };
 
     const handlePrev = () => {
         if (currentPage > 1) {
             setCurrentPage(currentPage - 1);
-            router.push(`${pathname}?page=${currentPage - 1}`);
+            updateQuery(currentPage - 1);
         }
     };
 
     const handleNext = () => {
-        if (currentPage <= totalPage) {
+        if (currentPage < totalPage) {
             setCurrentPage(currentPage + 1);
-            router.push(`${pathname}?page=${currentPage + 1}`);
+            updateQuery(currentPage + 1);
         }
     };
 
@@ -37,7 +51,7 @@ const TablePagination = ({ totalPage }: { totalPage: number }) => {
                 <Button
                     onClick={() => {
                         setCurrentPage(index + 1);
-                        router.push(`${pathname}?page=${index + 1}`);
+                        updateQuery(index + 1);
                     }}
                     key={index}
                     variant={currentPage === index + 1 ? "default" : "outline"}

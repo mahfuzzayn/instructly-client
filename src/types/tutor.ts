@@ -1,3 +1,5 @@
+import { IReview } from "./review";
+import { ISubject } from "./subject";
 import { IUser } from "./user";
 
 export interface ITutor {
@@ -6,11 +8,13 @@ export interface ITutor {
     bio: string;
     hourlyRate: number;
     profileUrl: string;
+    location: string;
     earnings: number;
-    subjects: string[];
+    averageRating: number;
+    subjects: ISubject[];
     availability: IAvailability[];
     bookings: string[];
-    reviews: string[];
+    reviews: IReview[];
     createdAt: Date;
     updatedAt: Date;
 }

@@ -1,4 +1,4 @@
-"use server"
+"use server";
 
 import { getNewToken } from "@/services/AuthService";
 import { jwtDecode } from "jwt-decode";
@@ -18,7 +18,7 @@ export const isTokenExpired = async (token: string): Promise<boolean> => {
     }
 };
 
-export const getValidToken = async () => {
+export const getValidToken = async (): Promise<string> => {
     const cookieStore = await cookies();
     let token = cookieStore.get("accessToken")!.value;
 

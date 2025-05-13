@@ -42,6 +42,7 @@ export function AppSidebar({
             },
             {
                 title: "Subjects",
+                url: `/${user?.role}/dashboard/subjects`,
                 icon: BookOpen,
                 items: [
                     {
@@ -85,8 +86,8 @@ export function AppSidebar({
             },
             {
                 title: "Reviews",
-                url: `/${user?.role}/dashboard/reviews`,
                 icon: StarIcon,
+                url: `/${user?.role}/dashboard/reviews`,
                 items: [
                     {
                         title: "Give Review",

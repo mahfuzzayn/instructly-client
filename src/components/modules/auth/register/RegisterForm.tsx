@@ -28,6 +28,8 @@ import ReCAPTCHA from "react-google-recaptcha";
 import "./RegisterForm.css";
 
 const RegisterForm = () => {
+    const { handleUser } = useUser();
+
     const form = useForm({
         resolver: zodResolver(registerSchema),
     });
@@ -67,7 +69,9 @@ const RegisterForm = () => {
             setIsLoading(true);
 
             if (res?.success) {
-                  toast.success("Registration completed successfully!");
+                handleUser();
+                toast.success("Registration completed successfully!");
+                
                 if (redirect) {
                     router.push(redirect);
                 } else {

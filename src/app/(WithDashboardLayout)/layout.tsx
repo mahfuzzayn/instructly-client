@@ -52,9 +52,9 @@ export default async function TutorDashboardLayout({
                         </Breadcrumb>
                     </div>
                 </header>
-                <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+                <section className="p-4 pt-0">
                     {children}
-                </div>
+                </section>
             </SidebarInset>
         </SidebarProvider>
     );

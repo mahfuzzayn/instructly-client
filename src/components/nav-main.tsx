@@ -46,7 +46,25 @@ export function NavMain({
                         className="group/collapsible"
                     >
                         <SidebarMenuItem>
-                            <Link href={item.url || "#"}>
+                            {item.url ? (
+                                <Link href={item.url}>
+                                    <CollapsibleTrigger asChild>
+                                        <SidebarMenuButton tooltip={item.title}>
+                                            {item.icon && <item.icon />}
+                                            {item.url ? (
+                                                <>
+                                                    <span>{item.title}</span>
+                                                </>
+                                            ) : (
+                                                <span>{item.title}</span>
+                                            )}
+                                            {item.collapsible && (
+                                                <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                                            )}
+                                        </SidebarMenuButton>
+                                    </CollapsibleTrigger>
+                                </Link>
+                            ) : (
                                 <CollapsibleTrigger asChild>
                                     <SidebarMenuButton tooltip={item.title}>
                                         {item.icon && <item.icon />}
@@ -62,7 +80,7 @@ export function NavMain({
                                         )}
                                     </SidebarMenuButton>
                                 </CollapsibleTrigger>
-                            </Link>
+                            )}
                             {item.collapsible && (
                                 <CollapsibleContent>
                                     <SidebarMenuSub>

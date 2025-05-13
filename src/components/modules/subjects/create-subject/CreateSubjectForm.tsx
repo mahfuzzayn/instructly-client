@@ -86,7 +86,7 @@ const CreateSubjectForm = ({ tutor }: { tutor: ITutor }) => {
     };
 
     return (
-        <div className="rounded-xl flex-grow max-w-md w-full p-5 login-form">
+        <div className="mx-auto rounded-xl flex-grow max-w-md w-full p-5 login-form">
             <div className="flex items-center space-x-4">
                 <div className="space-y-1 mb-4">
                     <h1 className="text-2xl font-bold">Create a Subject</h1>

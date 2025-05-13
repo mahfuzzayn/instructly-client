@@ -94,8 +94,12 @@ export function NavUser({
                                         src={user?.profileUrl}
                                         alt={user?.name}
                                     />
-                                    <AvatarFallback className="rounded-lg">
-                                        CN
+                                    <AvatarFallback className="rounded-lg text-white font-bold">
+                                        {user?.name
+                                            ?.split(" ")
+                                            .slice(0, 2)
+                                            .map((name) => name[0])
+                                            .join("")}
                                     </AvatarFallback>
                                 </Avatar>
                                 <div className="grid flex-1 text-left text-sm leading-tight">

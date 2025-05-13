@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
@@ -28,6 +27,8 @@ import ReCAPTCHA from "react-google-recaptcha";
 import "./SignupForm.css";
 
 const SignupForm = () => {
+    const { handleUser } = useUser();
+
     const form = useForm({
         resolver: zodResolver(signupSchema),
     });
@@ -67,7 +68,9 @@ const SignupForm = () => {
             setIsLoading(true);
 
             if (res?.success) {
+                handleUser();
                 toast.success("Sign Up completed successfully!");
+                
                 if (redirect) {
                     router.push(redirect);
                 } else {

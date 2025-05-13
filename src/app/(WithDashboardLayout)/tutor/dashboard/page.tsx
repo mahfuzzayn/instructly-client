@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+import { bangladeshiCurrencyFormatter } from "@/lib/currencyFormatter";
 import { getMe } from "@/services/AuthService";
 import { getMySubjects } from "@/services/Tutor";
 import { ISubject, ITutor } from "@/types";
@@ -14,13 +16,14 @@ const TutorDashboardPage = async () => {
                 <div className="w-full bg-it-light-primary rounded-md p-5 space-y-2">
                     <h2 className="text-2xl font-normal">Earnings</h2>
                     <p className="text-4xl font-extrabold">
-                        ${tutor?.earnings}
+                        {bangladeshiCurrencyFormatter(tutor?.earnings) ||
+                            `0 Taka`}
                     </p>
                 </div>
                 <div className="w-full bg-it-light-primary rounded-md p-5 space-y-2">
                     <h2 className="text-2xl font-normal">Hourly Rate</h2>
                     <p className="text-4xl font-extrabold">
-                        ${tutor?.hourlyRate}/hr
+                        {tutor?.hourlyRate || 0} Taka/hr
                     </p>
                 </div>
             </section>
@@ -34,13 +37,24 @@ const TutorDashboardPage = async () => {
                             Subjects
                         </Link>
                     </h2>
-                    <ul className="flex flex-wrap gap-5">
-                        {subjects.map((subject, idx) => (
-                            <li key={idx} className="text-lg font-extrabold">
-                                {subject?.name}
-                            </li>
-                        ))}
-                    </ul>
+                    {tutor?.subjects.length > 0 ? (
+                        <ul className="flex flex-wrap gap-5">
+                            {subjects.map((subject, idx) => (
+                                <li
+                                    key={idx}
+                                    className="text-lg font-extrabold"
+                                >
+                                    {subject?.name}
+                                </li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <p className="mt-2">
+                            <i className="font-semibold">
+                                You don't have any subjects yet.
+                            </i>
+                        </p>
+                    )}
                 </div>
             </section>
             <section className="flex flex-col md:flex-row gap-5 w-full">
@@ -75,7 +89,14 @@ const TutorDashboardPage = async () => {
                 <div className="w-full bg-it-light-primary rounded-md p-5 space-y-4">
                     <h2 className="text-2xl font-normal">Bio</h2>
                     <p className="text-xl font-extrabold">
-                        <i>{tutor?.bio}</i>
+                        {tutor?.bio ? (
+                            <i>{tutor?.bio}</i>
+                        ) : (
+                            <i className="text-gray-500">
+                                You didn't set your bio, go to manage profile
+                                and insert information.
+                            </i>
+                        )}
                     </p>
                 </div>
             </section>

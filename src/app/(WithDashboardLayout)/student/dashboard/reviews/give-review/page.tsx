@@ -1,11 +1,17 @@
-import React from 'react';
+import GiveReviewForm from "@/components/modules/reviews/GiveReviewForm";
+import { getMe } from "@/services/AuthService";
+import { getAllTutors } from "@/services/Tutor";
+import React from "react";
 
-const GiveReviewPage = () => {
+const SingleReviewPage = async () => {
+    const { data: student } = await getMe();
+    const { data: tutors } = await getAllTutors();
+
     return (
-        <div>
-            Give Review
-        </div>
+        <>
+            <GiveReviewForm student={student} tutors={tutors} />
+        </>
     );
 };
 
-export default GiveReviewPage;
+export default SingleReviewPage;

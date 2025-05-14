@@ -11,7 +11,7 @@ const TutorDetails = ({ tutor }: { tutor: ITutor }) => {
     const { user } = useUser();
 
     return (
-        <div className="my-10 flex justify-center mx-5">
+        <div className="my-10 flex justify-center mx-5 pt-10 pb-20">
             <section className="flex flex-col gap-6 max-w-[960px]">
                 <h2 className="text-3xl">
                     Tutor Profile:{" "}
@@ -82,7 +82,7 @@ const TutorDetails = ({ tutor }: { tutor: ITutor }) => {
                         </div>
                     </div>
                 </div>
-                {user ? (
+                {user && user?.role === "student" ? (
                     <TutorBooking tutor={tutor} />
                 ) : (
                     <p className="text-it-medium-dark text-center mt-10 mb-5">
@@ -93,7 +93,7 @@ const TutorDetails = ({ tutor }: { tutor: ITutor }) => {
                         >
                             Login
                         </Link>{" "}
-                        first
+                        {user?.role === "tutor" && "as a student"} first
                     </p>
                 )}
             </section>

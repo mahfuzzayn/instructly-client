@@ -6,7 +6,9 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useUser } from "@/context/UserContext";
 import { logout } from "@/services/AuthService";
+import logo from "../../assets/images/logo.png";
 import { protectedRoutes } from "@/constants";
+import Image from "next/image";
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -51,8 +53,14 @@ const Navbar = () => {
     return (
         <section className="py-4 border-b-1 border-[#3f2525]">
             <header className="container mx-auto flex justify-between items-center px-2 relative select-none">
-                <Link href="/">
-                    <h2 className="text-2xl font-extrabold pl-4">Instructly</h2>
+                <Link href="/" className="flex items-center gap-x-2 pl-2">
+                    <Image
+                        src={logo}
+                        height={40}
+                        width={40}
+                        alt="Instructly Logo"
+                    />
+                    <h2 className="text-2xl font-extrabold">Instructly</h2>
                 </Link>
                 <nav>
                     <ul className="hidden lg:flex gap-x-5 font-medium">
@@ -148,7 +156,7 @@ const Navbar = () => {
                         )}
                     </ul>
                 </nav>
-                <div className="flex lg:hidden gap-x-5 items-center p-2 pr-4">
+                <div className="flex lg:hidden gap-x-5 items-center p-2">
                     <div className="lg:hidden hamburger cursor-pointer">
                         {!isMenuOpen ? (
                             <MenuIcon

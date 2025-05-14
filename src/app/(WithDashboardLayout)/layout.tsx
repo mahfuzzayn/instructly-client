@@ -12,6 +12,8 @@ import {
     SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { getMe } from "@/services/AuthService";
+import logo from "../../assets/images/logo.png";
+import Image from "next/image";
 
 export default async function TutorDashboardLayout({
     children,
@@ -39,22 +41,28 @@ export default async function TutorDashboardLayout({
                         <Breadcrumb>
                             <BreadcrumbList>
                                 <BreadcrumbItem className="hidden md:block">
-                                    <BreadcrumbLink className="text-black">
-                                        Instructly{" "}
-                                        {user?.role === "tutor"
-                                            ? "Tutor Dashboard Management"
-                                            : user?.role === "student"
-                                            ? "Student Dashboard Management"
-                                            : "Dashboard Management"}
+                                    <BreadcrumbLink className="text-black flex items-center gap-x-2">
+                                        <Image
+                                            src={logo}
+                                            height={24}
+                                            width={24}
+                                            alt="Instructly Logo"
+                                        />
+                                        <span className="font-medium">
+                                            Instructly{" "}
+                                            {user?.role === "tutor"
+                                                ? "Tutor Dashboard Management"
+                                                : user?.role === "student"
+                                                ? "Student Dashboard Management"
+                                                : "Dashboard Management"}
+                                        </span>
                                     </BreadcrumbLink>
                                 </BreadcrumbItem>
                             </BreadcrumbList>
                         </Breadcrumb>
                     </div>
                 </header>
-                <section className="p-4 pt-0">
-                    {children}
-                </section>
+                <section className="p-4 pt-0">{children}</section>
             </SidebarInset>
         </SidebarProvider>
     );

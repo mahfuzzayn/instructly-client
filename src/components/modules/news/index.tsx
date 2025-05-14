@@ -4,36 +4,21 @@
 import { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Loading from "../../../assets/gifs/loading.gif";
 import Link from "next/link";
+import { IArticle } from "@/types";
+import Loading from "../../../assets/gifs/loading.gif";
 import Image from "next/image";
 
-type Article = {
-    title: string;
-    description: string | null;
-    url: string;
-    publishedAt: string;
-    source: { name: string };
-};
-
-const API_KEY = process.env.NEXT_PUBLIC_NEWS_API;
-const API_URL = `https://newsapi.org/v2/everything?q=education&apiKey=${API_KEY}`;
-
-export default function News() {
-    const [articles, setArticles] = useState<Article[]>([]);
+export default function News({ articles }: { articles: IArticle[] }) {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [searchQuery, setSearchQuery] = useState<string>("");
-    const [filteredArticles, setFilteredArticles] = useState<Article[]>([]);
+    const [filteredArticles, setFilteredArticles] = useState<IArticle[]>([]);
 
     useEffect(() => {
         const fetchArticles = async () => {
             try {
-                const response = await fetch(API_URL);
-                const data = await response.json();
-
-                if (data.articles) {
-                    setArticles(data.articles);
-                    setFilteredArticles(data.articles);
+                if (articles) {
+                    setFilteredArticles(articles);
                     setIsLoading(true);
                 }
             } catch (error) {
@@ -42,7 +27,7 @@ export default function News() {
         };
 
         fetchArticles();
-    }, []);
+    }, [articles]);
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         const query = e.target.value.toLowerCase();
@@ -77,7 +62,7 @@ export default function News() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredArticles.length > 0 ? (
-                    filteredArticles.map((article: Article, index) => (
+                    filteredArticles.map((article: IArticle, index) => (
                         <Card key={index} className="bg-it-medium-primary">
                             <CardHeader>
                                 <CardTitle className="text-lg">

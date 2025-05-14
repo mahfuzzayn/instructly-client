@@ -1,5 +1,4 @@
 import ITNews from "@/components/modules/news";
-import { getAllNews } from "@/services/News";
 import { IArticle } from "@/types";
 import { Metadata } from "next";
 import React from "react";
@@ -11,9 +10,10 @@ export const metadata: Metadata = {
 };
 
 const NewsPage = async () => {
-    const { data: news }: { data: { articles: IArticle[] } } =
-        await getAllNews();
-    console.log(news.articles);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/news`, {
+        cache: "force-cache",
+    });
+    const { data: news }: { data: { articles: IArticle[] } } = await res.json();
 
     return (
         <section className="min-h-screen">

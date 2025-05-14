@@ -234,7 +234,7 @@ export default function FilterSidebar({ subjects }: { subjects: ISubject[] }) {
                     </div>
                 </div>
             </div>
-            <div className="fixed lg:hidden top-16 left-0">
+            <div className="fixed lg:hidden top-24 left-0">
                 <Button
                     className="flex items-center gap-x-2 bg-it-medium-dark hover:bg-it-destructive p-1 pr-2 text-white rounded-l-none rounded-r-[8px]"
                     onClick={() => setIsFilterMenuOpen(true)}

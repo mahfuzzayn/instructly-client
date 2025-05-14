@@ -132,7 +132,7 @@ const LoginForm = () => {
                             </FormItem>
                         )}
                     />
-                    <div className="flex my-3 w-full">
+                    <div className="flex my-3 w-full overflow-x-scroll">
                         <ReCAPTCHA
                             sitekey={
                                 process.env

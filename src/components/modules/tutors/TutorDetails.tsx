@@ -6,6 +6,8 @@ import React from "react";
 import TutorBooking from "./TutorBooking";
 import { useUser } from "@/context/UserContext";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
 
 const TutorDetails = ({ tutor }: { tutor: ITutor }) => {
     const { user } = useUser();
@@ -13,6 +15,13 @@ const TutorDetails = ({ tutor }: { tutor: ITutor }) => {
     return (
         <div className="my-10 flex justify-center mx-5 pt-10 pb-20">
             <section className="flex flex-col gap-6 max-w-[960px]">
+                <div className="flex">
+                    <Link href="/tutors">
+                        <Button className="hover:bg-it-light-dark font-semibold">
+                            <ArrowLeft /> Tutors
+                        </Button>
+                    </Link>
+                </div>
                 <h2 className="text-3xl">
                     Tutor Profile:{" "}
                     <span className="font-bold">{tutor?.user?.name}</span>

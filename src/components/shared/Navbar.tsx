@@ -105,7 +105,7 @@ const Navbar = () => {
                         )}
                     </ul>
                 </nav>
-                <nav className="absolute z-10 top-[56px] left-0 w-full">
+                <nav className="absolute z-20 top-[56px] left-0 w-full">
                     <ul
                         className={`lg:hidden flex flex-col font-semibold bg-it-medium-dark w-full overflow-hidden ${
                             isMenuOpen && user

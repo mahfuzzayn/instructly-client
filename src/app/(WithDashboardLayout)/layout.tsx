@@ -40,7 +40,7 @@ export default async function TutorDashboardLayout({
                         />
                         <Breadcrumb>
                             <BreadcrumbList>
-                                <BreadcrumbItem className="hidden md:block">
+                                <BreadcrumbItem className="block">
                                     <BreadcrumbLink className="text-black flex items-center gap-x-2">
                                         <Image
                                             src={logo}
@@ -48,7 +48,7 @@ export default async function TutorDashboardLayout({
                                             width={24}
                                             alt="Instructly Logo"
                                         />
-                                        <span className="font-medium">
+                                        <span className="font-medium hidden md:block">
                                             Instructly{" "}
                                             {user?.role === "tutor"
                                                 ? "Tutor Dashboard Management"

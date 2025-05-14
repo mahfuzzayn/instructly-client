@@ -49,7 +49,7 @@ const HeroSection = ({ tutors }: { tutors: ITutor[] }) => {
 
     return (
         <section className="bg-it-medium-primary text-white h-[500px] sm:h-[540px] relative overflow-hidden pt-24">
-            <div className="max-w-7xl mx-auto text-center px-6 relative z-20">
+            <div className="max-w-7xl mx-auto text-center px-6 relative z-[15]">
                 <h1 className="text-4xl font-bold mb-4">
                     Find the Perfect Tutor for Your Needs
                 </h1>

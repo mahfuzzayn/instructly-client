@@ -24,15 +24,17 @@ const TutorCard = ({ tutor }: { tutor: ITutor }) => {
             <div>
                 <h2 className="text-lg font-semibold mb-2">Subjects Taught</h2>
                 {tutor?.subjects.length > 0 ? (
-                    <ul className="flex flex-wrap gap-x-8 gap-y-2 ml-8">
+                    <ul className="flex flex-wrap gap-x-8 gap-y-3 ml-6 mt-3">
                         {tutor?.subjects.map((subject) => (
                             <li className="list-disc" key={subject?._id}>
-                                <span>{subject?.name}</span>
+                                <p className="bg-it-medium-dark font-medium p-1 px-2 text-sm rounded-md text-white">
+                                    {subject?.name}
+                                </p>
                             </li>
                         ))}
                     </ul>
                 ) : (
-                    <p>No subjects were found!</p>
+                    <p className="mt-2 mb-4"><i>No subjects were found!</i></p>
                 )}
             </div>
             <h2 className="text-lg font-normal">

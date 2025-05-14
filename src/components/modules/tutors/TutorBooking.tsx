@@ -83,7 +83,7 @@ const TutorBooking = ({ tutor }: { tutor: ITutor }) => {
         <>
             <div className="space-y-2 mt-10">
                 <h2 className="text-lg font-bold">Booking Calendar</h2>
-                <div className="flex gap-8">
+                <div className="flex gap-6 md:gap-8">
                     <div className="space-y-2">
                         <h4 className="text-sm">Select Days of a Week</h4>
                         <div className="flex flex-wrap gap-4">

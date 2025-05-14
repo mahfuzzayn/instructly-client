@@ -3,8 +3,15 @@ import { bangladeshiCurrencyFormatter } from "@/lib/currencyFormatter";
 import { getMe } from "@/services/AuthService";
 import { getMySubjects } from "@/services/Tutor";
 import { ISubject, ITutor } from "@/types";
+import { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
+
+export const metadata: Metadata = {
+    title: "Tutor Dashboard ‣ Instructly",
+    description:
+        "Access your dashboard to see overview, manage bookings, subjects, and your profile as a tutor.",
+};
 
 const TutorDashboardPage = async () => {
     const { data: tutor }: { data: ITutor } = await getMe();

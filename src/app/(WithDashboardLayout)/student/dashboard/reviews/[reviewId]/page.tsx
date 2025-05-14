@@ -8,6 +8,31 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
+export const generateMetadata = async ({
+    params,
+}: {
+    params: Promise<{ reviewId: string }>;
+}) => {
+    const { reviewId } = await params;
+    const { data: review }: { data: IReview } = await getSingleReview(reviewId);
+
+    return {
+        title: `${
+            review?.createdAt
+                ? `Review (${review?._id.slice(0, 3)}...${review?._id.slice(
+                      review?._id.length - 3,
+                      review?._id.length
+                  )})`
+                : "Invalid Review"
+        } ‣ Student Dashboard ‣ Instructly`,
+        description: `${
+            review?.createdAt
+                ? `Review comment: ${review?.comment} by ${review?.student?.user?.name} to tutor ${review?.tutor?.user?.name}`
+                : "Invalid Review, so we can't provide any description."
+        }`,
+    };
+};
+
 const ViewStudentReviewPage = async ({
     params,
 }: {
@@ -15,6 +40,23 @@ const ViewStudentReviewPage = async ({
 }) => {
     const { reviewId } = await params;
     const { data: review }: { data: IReview } = await getSingleReview(reviewId);
+    
+    if (!review) {
+        return (
+            <div className="min-h-screen flex flex-col gap-5 justify-center items-center">
+                <h2 className="text-2xl font-bold">Invalid Review ID</h2>
+                <p>
+                    Review ID:{" "}
+                    <span className="font-semibold">{reviewId}</span>
+                </p>
+                <Link href="/student/dashboard/reviews">
+                    <Button className="hover:bg-it-light-dark font-semibold mb-5">
+                        <ArrowLeft /> Reviews
+                    </Button>
+                </Link>
+            </div>
+        );
+    }
 
     return (
         <div className="max-w-[960px] mx-auto p-5">

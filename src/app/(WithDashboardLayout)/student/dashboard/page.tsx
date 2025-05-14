@@ -1,8 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
 import { getMe } from "@/services/AuthService";
 import { IStudent } from "@/types";
+import { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
+
+export const metadata: Metadata = {
+    title: "Student Dashboard ‣ Instructly",
+    description:
+        "Access your dashboard to see overview of learning journey, manage bookings and your profile as a student.",
+};
 
 const StudentDashboardPage = async () => {
     const { data: student }: { data: IStudent } = await getMe();

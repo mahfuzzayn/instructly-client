@@ -9,6 +9,33 @@ import moment from "moment";
 import Link from "next/link";
 import React from "react";
 
+export const generateMetadata = async ({
+    params,
+}: {
+    params: Promise<{ bookingId: string }>;
+}) => {
+    const { bookingId } = await params;
+    const { data: booking }: { data: IBooking } = await getSingleBooking(
+        bookingId
+    );
+
+    return {
+        title: `${
+            booking?.createdAt
+                ? `Booking (${booking?._id.slice(0, 3)}...${booking?._id.slice(
+                      booking?._id.length - 3,
+                      booking?._id.length
+                  )})`
+                : "Invalid Booking"
+        } ‣ Tutor Dashboard ‣ Instructly`,
+        description: `${
+            booking?.createdAt
+                ? `Confirm your booking with tutor ${booking?.tutor?.user?.name}. Enhance your learning journey and achieve your academic goals.`
+                : "Invalid Booking, so we can't provide any description."
+        }`,
+    };
+};
+
 const TutorBookingPage = async ({
     params,
 }: {

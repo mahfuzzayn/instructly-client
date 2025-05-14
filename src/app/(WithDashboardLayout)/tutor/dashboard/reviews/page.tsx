@@ -1,7 +1,14 @@
 import MyReviews from "@/components/modules/reviews/MyReviews";
 import { getMyReviews } from "@/services/Review";
 import { IMeta, IReview } from "@/types";
+import { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+    title: "Reviews ‣ Tutor Dashboard ‣ Instructly",
+    description:
+        "View reviews of your's to gain confidence and to understand your improvement as a tutor.",
+};
 
 const TutorReviewsPage = async ({
     searchParams,

@@ -117,7 +117,13 @@ const ManageTutorBookings = ({
                         View
                         <SquareArrowOutUpRight />
                     </Button>
-                    <TutorBookingStatusChange booking={row.original} />
+                    {row.original.status !== "waiting_for_payment" &&
+                        row.original.status !== "canceled_by_student" &&
+                        row.original.status !== "canceled_by_tutor" &&
+                        row.original.status !== "completed" &&
+                        row.original.paymentStatus !== "completed" && (
+                            <TutorBookingStatusChange booking={row.original} />
+                        )}
                 </div>
             ),
         },

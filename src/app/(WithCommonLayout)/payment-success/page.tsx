@@ -3,6 +3,7 @@ import LiquidCheck from "../../../assets/gifs/animated-check.gif";
 import Image from "next/image";
 import Link from "next/link";
 import { getBookingByTrxId } from "@/services/Booking";
+import CrossCheck from "../../../assets/gifs/animated-cross-x.gif";
 
 const PaymentSuccessPage = async ({
     searchParams,
@@ -14,9 +15,15 @@ const PaymentSuccessPage = async ({
 
     if (!booking) {
         return (
-            <div className="min-h-screen flex justify-center items-center">
+            <div className="min-h-screen flex justify-center items-center px-4">
                 <div className="bg-it-light-primary space-y-10 p-10 rounded-xl">
                     <div className="flex gap-x-2 items-center">
+                        <Image
+                            src={CrossCheck}
+                            height={40}
+                            width={40}
+                            alt="Loading"
+                        />
                         <h2 className="text-2xl text-destructive font-bold">
                             Invalid Transaction ID
                         </h2>
@@ -25,10 +32,13 @@ const PaymentSuccessPage = async ({
                         Note: If a new payment was initiated then previous
                         transaction ID of your booking may have been changed,
                         head over to{" "}
-                        <Link href="/student/dashboard/bookings" className="font-semibold underline">
+                        <Link
+                            href="/student/dashboard/bookings"
+                            className="font-semibold underline"
+                        >
                             Dashboard
-                        </Link> to overlook changes.
-                        .
+                        </Link>{" "}
+                        to overlook changes. .
                     </p>
                     <p className="text-it-secondary text-center">
                         Back to{" "}
@@ -51,7 +61,9 @@ const PaymentSuccessPage = async ({
                         width={40}
                         alt="Loading"
                     />
-                    <h2 className="text-2xl text-destructive font-bold">Payment Successful</h2>
+                    <h2 className="text-2xl text-destructive font-bold">
+                        Payment Successful
+                    </h2>
                 </div>
                 <p className="text-it-secondary text-center">
                     View Booking on{" "}

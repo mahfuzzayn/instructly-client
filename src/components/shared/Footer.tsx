@@ -3,12 +3,19 @@ import React from "react";
 
 const Footer = () => {
     return (
-        <footer className="p-5 text-center">
+        <footer className="bg-it-light-primary p-5 text-center">
             <p>
-                Copyright © 2025 Instructly All Rights Reserved. Powered by{" "}
-                <Link href="https://mzayn.vercel.app/" className="hover:text-blue-500" target="_blank">
-                    Mahfuz Zayn
+                <span>
+                    Copyright © 2025 Instructly All Rights Reserved. Powered by{" "}
+                </span>
+                <Link
+                    href="https://mzayn.vercel.app/"
+                    className="font-semibold hover:text-it-secondary transition-colors"
+                    target="_blank"
+                >
+                    Mahfuz Zayn{" "}
                 </Link>
+                <span className="text-red-500">❤</span>
             </p>
         </footer>
     );

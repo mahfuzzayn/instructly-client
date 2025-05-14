@@ -3,7 +3,14 @@ import FilterSidebar from "@/components/modules/tutors/filterSidebar";
 import { getAllSubjects } from "@/services/Subject";
 import { getAllTutors } from "@/services/Tutor";
 import { IMeta, ITutor } from "@/types";
+import { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+    title: "Tutors ‣ Instructly",
+    description:
+        "Browse our list of qualified tutors across various subjects to find the perfect match for your learning needs.",
+};
 
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
@@ -15,11 +22,11 @@ const TutorsPage = async ({ searchParams }: { searchParams: SearchParams }) => {
     const { data: subjects } = await getAllSubjects();
 
     return (
-        <main className="my-10">
-            <h1 className="text-3xl text-center font-extrabold mb-10">
+        <main className="mt-20 mb-32">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl text-center font-bold mb-10">
                 Explore Tutors of Instructly
             </h1>
-            <div className="flex gap-8">
+            <div className="lg:flex gap-8">
                 <div className="w-full max-w-xs">
                     <FilterSidebar subjects={subjects} />
                 </div>

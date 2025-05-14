@@ -13,12 +13,12 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Link from "next/link";
 import { loginUser, reCaptchaTokenVerification } from "@/services/AuthService";
 import { toast } from "sonner";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { loginSchema } from "./loginValidation";
 import { useUser } from "@/context/UserContext";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -26,6 +26,8 @@ import "./LoginForm.css";
 
 const LoginForm = () => {
     const { handleUser } = useUser();
+    const [redirect, setRedirect] = useState<string | null>(null);
+
     const form = useForm({
         resolver: zodResolver(loginSchema),
     });
@@ -34,8 +36,11 @@ const LoginForm = () => {
 
     const [reCaptchaStatus, setReCaptchaStatus] = useState(false);
 
-    const searchParams = useSearchParams();
-    const redirect = searchParams.get("redirectPath");
+    useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search);
+        setRedirect(searchParams.get("redirectPath"));
+    }, []);
+
     const router = useRouter();
 
     const {

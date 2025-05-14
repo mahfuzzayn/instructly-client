@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 import { days } from "@/constants";
 import { ISubject } from "@/types";
+import { Menu, X } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
@@ -32,6 +33,7 @@ const sortByOptions = [
 ];
 
 export default function FilterSidebar({ subjects }: { subjects: ISubject[] }) {
+    const [isFilterMenuOpen, setIsFilterMenuOpen] = useState<boolean>(false);
     const [hourlyRate, setHourlyRate] = useState([0]);
     const [rating, setRating] = useState<number | string>("All");
     const [location, setLocation] = useState<string>("Set None");
@@ -88,132 +90,159 @@ export default function FilterSidebar({ subjects }: { subjects: ISubject[] }) {
     };
 
     return (
-        <div className="p-6 h-full bg-it-light-dark ml-6 rounded-md text-white space-y-4">
-            <div className="flex justify-between">
-                <h2 className="text-2xl font-bold">Filter</h2>
-                {searchParams.toString().length > 0 && (
+        <section>
+            <div
+                className={`fixed top-0 ${
+                    isFilterMenuOpen
+                        ? "left-[0px]"
+                        : "left-[-400px]"
+                } overflow-y-scroll lg:overflow-y-auto lg:static p-6 h-full space-y-4 w-[300px] lg:w-auto lg:ml-6 lg:rounded-md text-white bg-it-light-dark z-[5] transition-all`}
+            >
+                <div className="flex items-center justify-between">
+                    <h2 className="text-2xl font-bold">Filter</h2>
+                    {searchParams.toString().length > 0 && (
+                        <Button
+                            onClick={() => {
+                                setRating("All");
+                                setHourlyRate([0]);
+                                setLocation("Set None");
+                                setSelectedDays([]);
+                                setSelectedSubjects([]);
+                                router.push(`${pathname}`, {
+                                    scroll: false,
+                                });
+                            }}
+                            size="sm"
+                            className="bg-red-500 hover:bg-red-700"
+                        >
+                            Clear Filters
+                        </Button>
+                    )}
                     <Button
-                        onClick={() => {
-                            setRating("All");
-                            setHourlyRate([0]);
-                            setLocation("Set None");
-                            setSelectedDays([]);
-                            setSelectedSubjects([]);
-                            router.push(`${pathname}`, {
-                                scroll: false,
-                            });
-                        }}
-                        size="sm"
-                        className="bg-red-500 hover:bg-red-700"
+                        className="lg:hidden bg-it-medium-dark hover:bg-it-destructive text-white rounded-full !p-3"
+                        onClick={() => setIsFilterMenuOpen(false)}
                     >
-                        Clear Filters
+                        <X />
                     </Button>
-                )}
-            </div>
-            <div>
-                <h2 className="text-lg font-semibold">Subjects</h2>
-                <div className="flex flex-wrap gap-2 mt-2">
-                    {subjects.map((subject) => (
-                        <li
-                            key={subject._id}
-                            onClick={() => handleSubjectChange(subject._id)}
-                            className={`px-2 py-1 cursor-pointer text-sm rounded list-none ${
-                                selectedSubjects.includes(subject._id)
-                                    ? "bg-it-destructive text-white"
-                                    : "bg-gray-200 text-black"
-                            }`}
-                        >
-                            {subject.name}
-                        </li>
-                    ))}
+                </div>
+                <div>
+                    <h2 className="text-lg font-semibold">Subjects</h2>
+                    <div className="flex flex-wrap gap-2 mt-2">
+                        {subjects.map((subject) => (
+                            <li
+                                key={subject._id}
+                                onClick={() => handleSubjectChange(subject._id)}
+                                className={`px-2 py-1 cursor-pointer text-sm rounded list-none ${
+                                    selectedSubjects.includes(subject._id)
+                                        ? "bg-it-destructive text-white"
+                                        : "bg-gray-200 text-black"
+                                }`}
+                            >
+                                {subject.name}
+                            </li>
+                        ))}
+                    </div>
+                </div>
+                <div>
+                    <h2 className="text-lg font-semibold">Rating</h2>
+                    <div className="flex justify-between my-2">
+                        <span>0</span>
+                        <span>5</span>
+                    </div>
+                    <Slider
+                        max={5}
+                        step={0.1}
+                        onValueChange={(value) => {
+                            setRating(Number(value));
+                            handleSearchQuery("rating", value[0]);
+                        }}
+                        className="w-full cursor-move"
+                    />
+                    <p className="text-sm mt-2">Selected Rating: {rating}</p>
+                </div>
+                <div>
+                    <h2 className="text-lg font-semibold">
+                        Hourly Rate (Taka)
+                    </h2>
+                    <div className="flex justify-between my-2">
+                        <span>0</span>
+                        <span>1000</span>
+                    </div>
+                    <Slider
+                        max={1000}
+                        step={1}
+                        onValueChange={(value) => {
+                            setHourlyRate(value);
+                            handleSearchQuery("maxHRate", value[0]);
+                        }}
+                        value={hourlyRate}
+                        className="w-full cursor-move"
+                    />
+                    <p className="text-sm mt-2">
+                        Selected Hourly Rate: {hourlyRate[0]}
+                    </p>
+                </div>
+                <div>
+                    <h2 className="text-lg font-semibold">Availability</h2>
+                    <div className="flex flex-wrap gap-2 mt-2">
+                        {days.map((day) => (
+                            <li
+                                key={day}
+                                onClick={() => handleDaysChange(day)}
+                                className={`px-2 py-1 text-sm list-none rounded  cursor-pointer ${
+                                    selectedDays.includes(day)
+                                        ? "bg-it-destructive text-white"
+                                        : "bg-gray-200 text-black"
+                                }`}
+                            >
+                                {day}
+                            </li>
+                        ))}
+                    </div>
+                </div>
+                <div>
+                    <h2 className="text-lg font-semibold">Location</h2>
+                    <span className="text-sm">
+                        Insert (Area, City, District)
+                    </span>
+                    <Input
+                        onChange={(e) => {
+                            const value = e.target.value;
+                            setLocation(value);
+                            handleSearchQuery("location", value);
+                        }}
+                        value={location !== "Set None" ? location : ""}
+                        className="w-full mt-2 border-white bg-it-medium-dark"
+                    />
+                </div>
+                <div>
+                    <h2 className="text-lg font-semibold">Sort By</h2>
+                    <div className="flex flex-wrap gap-2 mt-2">
+                        {sortByOptions.map((option) => (
+                            <li
+                                key={option.label}
+                                onClick={() => handleSortByChange(option.value)}
+                                className={`px-2 py-1 text-sm list-none rounded  cursor-pointer ${
+                                    option.value === sortBy
+                                        ? "bg-it-destructive text-white"
+                                        : "bg-gray-200 text-black"
+                                }`}
+                            >
+                                {option.label}
+                            </li>
+                        ))}
+                    </div>
                 </div>
             </div>
-            <div>
-                <h2 className="text-lg font-semibold">Rating</h2>
-                <div className="flex justify-between my-2">
-                    <span>0</span>
-                    <span>5</span>
-                </div>
-                <Slider
-                    max={5}
-                    step={0.1}
-                    onValueChange={(value) => {
-                        setRating(Number(value));
-                        handleSearchQuery("rating", value[0]);
-                    }}
-                    className="w-full cursor-move"
-                />
-                <p className="text-sm mt-2">Selected Rating: {rating}</p>
+            <div className="fixed lg:hidden top-16 left-0">
+                <Button
+                    className="flex items-center gap-x-2 bg-it-medium-dark hover:bg-it-destructive p-1 pr-2 text-white rounded-l-none rounded-r-[8px]"
+                    onClick={() => setIsFilterMenuOpen(true)}
+                >
+                    <p className="text-lg font-semibold">Filter</p>
+                    <Menu />
+                </Button>
             </div>
-            <div>
-                <h2 className="text-lg font-semibold">Hourly Rate (Taka)</h2>
-                <div className="flex justify-between my-2">
-                    <span>0</span>
-                    <span>1000</span>
-                </div>
-                <Slider
-                    max={1000}
-                    step={1}
-                    onValueChange={(value) => {
-                        setHourlyRate(value);
-                        handleSearchQuery("maxHRate", value[0]);
-                    }}
-                    value={hourlyRate}
-                    className="w-full cursor-move"
-                />
-                <p className="text-sm mt-2">
-                    Selected Hourly Rate: {hourlyRate[0]}
-                </p>
-            </div>
-            <div>
-                <h2 className="text-lg font-semibold">Availability</h2>
-                <div className="flex flex-wrap gap-2 mt-2">
-                    {days.map((day) => (
-                        <li
-                            key={day}
-                            onClick={() => handleDaysChange(day)}
-                            className={`px-2 py-1 text-sm list-none rounded  cursor-pointer ${
-                                selectedDays.includes(day)
-                                    ? "bg-it-destructive text-white"
-                                    : "bg-gray-200 text-black"
-                            }`}
-                        >
-                            {day}
-                        </li>
-                    ))}
-                </div>
-            </div>
-            <div>
-                <h2 className="text-lg font-semibold">Location</h2>
-                <span className="text-sm">Insert (Area, City, District)</span>
-                <Input
-                    onChange={(e) => {
-                        const value = e.target.value;
-                        setLocation(value);
-                        handleSearchQuery("location", value);
-                    }}
-                    value={location !== "Set None" ? location : ""}
-                    className="w-full mt-2 border-white bg-it-medium-dark"
-                />
-            </div>
-            <div>
-                <h2 className="text-lg font-semibold">Sort By</h2>
-                <div className="flex flex-wrap gap-2 mt-2">
-                    {sortByOptions.map((option) => (
-                        <li
-                            key={option.label}
-                            onClick={() => handleSortByChange(option.value)}
-                            className={`px-2 py-1 text-sm list-none rounded  cursor-pointer ${
-                                option.value === sortBy
-                                    ? "bg-it-destructive text-white"
-                                    : "bg-gray-200 text-black"
-                            }`}
-                        >
-                            {option.label}
-                        </li>
-                    ))}
-                </div>
-            </div>
-        </div>
+        </section>
     );
 }

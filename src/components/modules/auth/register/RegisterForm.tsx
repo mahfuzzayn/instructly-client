@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
@@ -13,7 +12,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Link from "next/link";
 import {
@@ -21,7 +20,7 @@ import {
     registerUser,
 } from "@/services/AuthService";
 import { toast } from "sonner";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { registerSchema } from "./registerValidation";
 import { useUser } from "@/context/UserContext";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -29,6 +28,7 @@ import "./RegisterForm.css";
 
 const RegisterForm = () => {
     const { handleUser } = useUser();
+    const [redirect, setRedirect] = useState<string | null>(null);
 
     const form = useForm({
         resolver: zodResolver(registerSchema),
@@ -38,8 +38,11 @@ const RegisterForm = () => {
 
     const [reCaptchaStatus, setReCaptchaStatus] = useState(false);
 
-    const searchParams = useSearchParams();
-    const redirect = searchParams.get("redirectPath");
+    useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search);
+        setRedirect(searchParams.get("redirectPath"));
+    }, []);
+
     const router = useRouter();
 
     const {
@@ -71,7 +74,7 @@ const RegisterForm = () => {
             if (res?.success) {
                 handleUser();
                 toast.success("Registration completed successfully!");
-                
+
                 if (redirect) {
                     router.push(redirect);
                 } else {

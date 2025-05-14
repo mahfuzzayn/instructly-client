@@ -6,8 +6,10 @@ import { ITutor } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import userAvatar from "../../../../assets/images/user.png";
+import tutorsImage from "../../../../assets/images/tutors.png";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import "./HeroSection.css";
 
 const HeroSection = ({ tutors }: { tutors: ITutor[] }) => {
     const router = useRouter();
@@ -46,8 +48,8 @@ const HeroSection = ({ tutors }: { tutors: ITutor[] }) => {
     };
 
     return (
-        <section className="bg-it-medium-primary text-white py-40">
-            <div className="max-w-7xl mx-auto text-center px-6">
+        <section className="bg-it-medium-primary text-white h-[500px] sm:h-[540px] relative overflow-hidden pt-24">
+            <div className="max-w-7xl mx-auto text-center px-6 relative z-20">
                 <h1 className="text-4xl font-bold mb-4">
                     Find the Perfect Tutor for Your Needs
                 </h1>
@@ -95,6 +97,13 @@ const HeroSection = ({ tutors }: { tutors: ITutor[] }) => {
                         Search
                     </Button>
                 </div>
+            </div>
+            <div className="tutors-image-container absolute -bottom-20 elect-none pointer-events-none">
+                <Image
+                    src={tutorsImage}
+                    alt="Tutors Image"
+                    className="mx-auto"
+                />
             </div>
         </section>
     );

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import TutorViewBookingManagement from "@/components/modules/bookings/tutor/TutorViewBookingManagement";
 import { Button } from "@/components/ui/button";
 import { ITPaymentStatusBadge } from "@/components/ui/core/ITPaymentStatusBadge/ITPaymentStatusBadge";
@@ -153,7 +154,9 @@ const TutorBookingPage = async ({
                     <p>
                         Transaction ID:{" "}
                         <span className="font-semibold text-it-medium-dark">
-                            {booking?.transactionId}
+                            {booking?.transactionId || (
+                                <i>Payment isn't initiated yet</i>
+                            )}
                         </span>
                     </p>
                     <TutorViewBookingManagement booking={booking} />

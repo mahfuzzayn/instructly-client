@@ -75,33 +75,24 @@ const Navbar = () => {
                         ))}
                         {user?.email ? (
                             <>
-                                <li>
-                                    <Link
-                                        href={`/${user?.role}/dashboard`}
-                                        className="hover:text-blue-500"
-                                    >
-                                        Dashboard
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link
-                                        href="/"
-                                        onClick={handleLogOut}
-                                        className="hover:text-blue-500"
-                                    >
-                                        Logout
-                                    </Link>
-                                </li>
-                            </>
-                        ) : (
-                            <li>
                                 <Link
-                                    href="/login"
+                                    href={`/${user?.role}/dashboard`}
                                     className="hover:text-blue-500"
                                 >
-                                    Login
+                                    Dashboard
                                 </Link>
-                            </li>
+                                <Link
+                                    href="/"
+                                    onClick={handleLogOut}
+                                    className="hover:text-blue-500"
+                                >
+                                    Logout
+                                </Link>
+                            </>
+                        ) : (
+                            <Link href="/login" className="hover:text-blue-500">
+                                Login
+                            </Link>
                         )}
                     </ul>
                 </nav>

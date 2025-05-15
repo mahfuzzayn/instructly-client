@@ -15,25 +15,25 @@ const aboutData = {
             name: "Mahfuz Zayn",
             role: "Founder & CEO",
             description:
-                "Passionate about education and technology, John founded Instructly to make quality tutoring accessible to everyone.",
+                "Passionate about education and technology, Mahfuz founded Instructly to make quality tutoring accessible to everyone.",
         },
         {
             name: "Mushfique Raiyan",
             role: "COO",
             description:
-                "With a background in software development, Jane leads the technical innovation behind the platform.",
+                "An operational strategist, Mushfique ensures the smooth execution of Instructly's vision and drives overall business growth.",
         },
         {
             name: "Sakkif Hossain Rafid",
-            role: "Devops Engineer",
+            role: "DevOps Engineer",
             description:
-                "With a background in software development, Jane leads the technical innovation behind the platform.",
+                "Specializing in system reliability and efficiency, Sakkif manages the infrastructure to ensure seamless platform performance.",
         },
         {
             name: "Mujahidul Islam",
             role: "Frontend Developer",
             description:
-                "With a background in software development, Jane leads the technical innovation behind the platform.",
+                "With an eye for design and usability, Mujahidul crafts engaging and intuitive interfaces for the platform.",
         },
     ],
     successStories: [

@@ -6,7 +6,7 @@ import { ITTable } from "@/components/ui/core/ITTable";
 import TablePagination from "@/components/ui/core/ITTable/TablePagination";
 import moment from "moment";
 import { Button } from "@/components/ui/button";
-import { SquareArrowOutUpRight } from "lucide-react";
+import { Plus, SquareArrowOutUpRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/context/UserContext";
 import { Rating } from "@smastrom/react-rating";
@@ -103,8 +103,21 @@ const MyReviews = ({ reviews, meta }: { reviews: IReview[]; meta: IMeta }) => {
 
     return (
         <div className="m-5">
-            <div className="mb-4">
+            <div className="flex items-center justify-between mb-4">
                 <h1 className="text-xl font-bold">My Reviews</h1>
+                <div className="flex items-center gap-2">
+                    <Button
+                        onClick={() =>
+                            router.push(
+                                "/student/dashboard/reviews/give-review"
+                            )
+                        }
+                        size="sm"
+                        className="hover:bg-it-medium-dark"
+                    >
+                        Give Review <Plus />
+                    </Button>
+                </div>
             </div>
             <ITTable columns={columns} data={reviews || []} />
             <TablePagination totalPage={meta?.totalPage} />

@@ -8,6 +8,8 @@ import { useUser } from "@/context/UserContext";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 
 const TutorDetails = ({ tutor }: { tutor: ITutor }) => {
     const { user } = useUser();
@@ -42,11 +44,17 @@ const TutorDetails = ({ tutor }: { tutor: ITutor }) => {
                     <div>
                         <h4 className="text-lg font-bold">Subjects Taught</h4>
                         <div className="mt-2">
-                            {tutor?.subjects?.map((subject) => (
-                                <li className="list-outside" key={subject?._id}>
-                                    {subject?.name}
-                                </li>
-                            ))}
+                            {tutor?.subjects?.map(
+                                (subject) =>
+                                    subject?.status === "active" && (
+                                        <li
+                                            className="list-outside"
+                                            key={subject?._id}
+                                        >
+                                            {subject?.name}
+                                        </li>
+                                    )
+                            )}
                         </div>
                     </div>
                     <div className="flex flex-col gap-y-2">
@@ -65,9 +73,19 @@ const TutorDetails = ({ tutor }: { tutor: ITutor }) => {
                                     key={review?._id}
                                     className="bg-it-accent p-2 px-4 rounded-sm"
                                 >
-                                    <h4 className="font-semibold">
-                                        {review?.student?.user?.name}
-                                    </h4>
+                                    <div className="flex gap-x-2">
+                                        <h4 className="font-semibold">
+                                            {review?.student?.user?.name}
+                                        </h4>
+                                        <span className="font-medium">
+                                            ({review?.rating})
+                                        </span>
+                                        <Rating
+                                            style={{ maxWidth: 60 }}
+                                            value={review?.rating}
+                                            readOnly
+                                        />
+                                    </div>
                                     <p>{review?.comment}</p>
                                 </div>
                             ))}

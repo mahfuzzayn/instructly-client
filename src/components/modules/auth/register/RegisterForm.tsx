@@ -160,7 +160,7 @@ const RegisterForm = () => {
                             </FormItem>
                         )}
                     />
-                    <div className="flex my-3 w-full overflow-x-scroll">
+                    <div className="flex my-3 w-full overflow-x-scroll sm:overflow-x-auto">
                         <ReCAPTCHA
                             sitekey={
                                 process.env

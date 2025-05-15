@@ -34,6 +34,8 @@ import { reCaptchaTokenVerification } from "@/services/AuthService";
 import { giveReviewSchema } from "./giveReviewValidation";
 import { giveReview, ReviewFormData } from "@/services/Review";
 import { Textarea } from "@/components/ui/textarea";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 
 const GiveReviewForm = ({
     student,
@@ -95,6 +97,11 @@ const GiveReviewForm = ({
 
     return (
         <div className="mx-auto rounded-xl flex-grow max-w-md w-full p-5 login-form">
+            <Link href={`/student/dashboard/reviews`}>
+                <Button className="hover:bg-it-light-dark font-semibold mt-5 mb-10">
+                    <ArrowLeft /> Reviews
+                </Button>
+            </Link>
             <div className="flex items-center space-x-4">
                 <div className="space-y-1 mb-4">
                     <h1 className="text-2xl font-bold">Give a Review</h1>
@@ -186,7 +193,7 @@ const GiveReviewForm = ({
                             </FormItem>
                         )}
                     />
-                    <div className="flex my-3 w-full">
+                    <div className="flex my-3 w-full overflow-x-scroll sm:overflow-x-auto">
                         <ReCAPTCHA
                             sitekey={
                                 process.env

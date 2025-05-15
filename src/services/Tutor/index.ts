@@ -94,7 +94,7 @@ export const getMySubjects = async (
 
     try {
         const res = await fetch(
-            `${process.env.NEXT_PUBLIC_BASE_API}/subjects/my-subjects?limit=${limit}&page=${page}&${params}`,
+            `${process.env.NEXT_PUBLIC_BASE_API}/subjects/my-subjects?limit=${limit}&page=${page}&${params}&sort=-createdAt`,
             {
                 method: "GET",
                 headers: {

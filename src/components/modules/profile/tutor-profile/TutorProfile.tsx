@@ -139,7 +139,7 @@ const TutorProfile = ({ tutor }: { tutor: ITutor }) => {
                         setImageFile={setImageFile}
                         setImagePreview={setImagePreview}
                         label="Upload Image"
-                        className="w-fit mt-0"
+                        className="w-full max-w-44 mt-0"
                     />
                 )}
             </div>
@@ -377,7 +377,7 @@ const TutorProfile = ({ tutor }: { tutor: ITutor }) => {
                             )}
                         </div>
                     </div>
-                    <div className="flex my-3 w-full">
+                    <div className="flex my-3 w-full overflow-x-scroll sm:overflow-x-auto">
                         <ReCAPTCHA
                             sitekey={
                                 process.env

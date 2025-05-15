@@ -34,6 +34,8 @@ import { ITutor } from "@/types";
 import ReCAPTCHA from "react-google-recaptcha";
 import { reCaptchaTokenVerification } from "@/services/AuthService";
 import { createSubject } from "@/services/Subject";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 
 const CreateSubjectForm = ({ tutor }: { tutor: ITutor }) => {
     const [reCaptchaStatus, setReCaptchaStatus] = useState(false);
@@ -87,6 +89,11 @@ const CreateSubjectForm = ({ tutor }: { tutor: ITutor }) => {
 
     return (
         <div className="mx-auto rounded-xl flex-grow max-w-md w-full p-5 pt-10 login-form">
+            <Link href={`/tutor/dashboard/subjects`}>
+                <Button className="hover:bg-it-light-dark font-semibold mt-5 mb-10">
+                    <ArrowLeft /> Subjects
+                </Button>
+            </Link>
             <div className="flex items-center space-x-4">
                 <div className="space-y-1 mb-4">
                     <h1 className="text-2xl font-bold">Create a Subject</h1>
@@ -195,7 +202,7 @@ const CreateSubjectForm = ({ tutor }: { tutor: ITutor }) => {
                             </div>
                         )}
                     />
-                    <div className="flex my-3 w-full">
+                    <div className="flex my-3 w-full overflow-x-scroll sm:overflow-x-auto">
                         <ReCAPTCHA
                             sitekey={
                                 process.env

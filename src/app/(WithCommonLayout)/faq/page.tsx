@@ -31,7 +31,7 @@ const faqData = [
         questions: [
             {
                 question: "How are payments processed?",
-                answer: "Payments are securely processed through our integrated payment gateway using SSL encryption.",
+                answer: "Payments are securely processed through our integrated payment gateway SSLCommerz with SSL encryption.",
             },
             {
                 question: "Are refunds available?",
@@ -43,8 +43,8 @@ const faqData = [
         category: "Account Management",
         questions: [
             {
-                question: "How do I reset my password?",
-                answer: "Go to the login page, click 'Forgot Password,' and follow the instructions to reset your password.",
+                question: "How can I manage my subjects of interests?",
+                answer: "Go to the Dashboard, then head over to profile option, upload your desired photo and apply the changes.",
             },
             {
                 question: "Can I update my profile information?",

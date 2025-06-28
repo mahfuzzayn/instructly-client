@@ -47,13 +47,13 @@ const Testimonials = () => {
                     {testimonialsData.map((review, index) => (
                         <Card
                             key={index}
-                            className="bg-gradient-to-r from-it-light-primary to-it-primary border-[1px] border-it-light-primary"
+                            className="bg-gradient-to-r from-it-medium-primary to-it-light-dark border-[1px] border-it-light-primary"
                         >
                             <CardContent className="pt-6">
-                                <p className="italic font-medium text-it-destructive text-[17px]">
+                                <p className="italic font-medium text-white text-[18px]">
                                     "{review.comment}"
                                 </p>
-                                <p className="text-[16px] font-semibold text-gray-700 mt-4">
+                                <p className="text-[16px] font-semibold text-it-medium-dark mt-4">
                                     ⎯ {review.name}
                                 </p>
                             </CardContent>

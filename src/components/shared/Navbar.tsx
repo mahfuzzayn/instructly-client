@@ -52,7 +52,7 @@ const Navbar = () => {
 
     return (
         <section className="py-4 fixed top-0 w-full bg-it-medium-dark z-[100]">
-            <header className="container mx-auto flex justify-between items-center px-2 relative select-none">
+            <header className="container max-w-[1280px] mx-auto flex justify-between items-center px-2 relative select-none">
                 <Link href="/" className="flex items-center gap-x-2 pl-2">
                     <Image
                         src={logo}

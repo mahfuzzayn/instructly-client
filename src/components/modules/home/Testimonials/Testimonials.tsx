@@ -47,7 +47,7 @@ const Testimonials = () => {
                     {testimonialsData.map((review, index) => (
                         <Card
                             key={index}
-                            className="bg-gradient-to-r from-it-medium-primary to-it-light-dark border-[1px] border-it-light-primary"
+                            className="bg-gradient-to-r from-it-light-primary to-it-medium-primary border-[1px] border-it-medium-primary"
                         >
                             <CardContent className="pt-6">
                                 <p className="italic font-medium text-white text-[18px]">

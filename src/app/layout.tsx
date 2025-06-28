@@ -3,6 +3,7 @@ import { Raleway } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import Providers from "@/providers/Providers";
+import "@smastrom/react-rating/style.css";
 
 const railwaySans = Raleway({
     variable: "--font-railway",

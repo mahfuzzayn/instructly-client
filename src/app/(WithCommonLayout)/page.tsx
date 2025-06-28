@@ -6,6 +6,7 @@ import { getAllTutors } from "@/services/Tutor";
 import { Metadata } from "next";
 import { getAllSubjects } from "@/services/Subject";
 import Subjects from "@/components/modules/home/Subjects/Subjects";
+import Tutors from "@/components/modules/home/Tutors/Tutors";
 
 export const metadata: Metadata = {
     title: "Instructly",
@@ -21,6 +22,7 @@ const HomePage = async () => {
         <div className="min-h-screen bg-gray-50">
             <HeroSection tutors={tutors} />
             <Subjects subjects={subjects} />
+            <Tutors tutors={tutors} />
             <KeyFeatures />
             <Testimonials />
             <GetStarted />

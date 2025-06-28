@@ -66,7 +66,7 @@ export function NavUser({
                                     src={user?.profileUrl}
                                     alt={user?.name}
                                 />
-                                <AvatarFallback className="rounded-lg">
+                                <AvatarFallback className="rounded-lg text-white font-bold">
                                     {user?.name?.slice(0, 1)}
                                 </AvatarFallback>
                             </Avatar>

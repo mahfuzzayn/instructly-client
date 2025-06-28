@@ -10,7 +10,6 @@ import { Plus, SquareArrowOutUpRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/context/UserContext";
 import { Rating } from "@smastrom/react-rating";
-import "@smastrom/react-rating/style.css";
 
 const MyReviews = ({ reviews, meta }: { reviews: IReview[]; meta: IMeta }) => {
     const { user } = useUser();

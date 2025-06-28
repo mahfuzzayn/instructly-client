@@ -54,7 +54,7 @@ const HeroSection = ({ tutors }: { tutors: ITutor[] }) => {
                     <h1 className="text-3xl md:text-5xl font-extrabold mb-4">
                         Find the Perfect Tutor for Your Needs
                     </h1>
-                    <p className="text-lg mb-6 font-medium">
+                    <p className="text-lg mb-6 text-it-secondary font-medium">
                         Search by subject, grade, or tutor name to connect with
                         qualified professionals.
                     </p>

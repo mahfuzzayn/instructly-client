@@ -45,9 +45,12 @@ const Testimonials = () => {
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {testimonialsData.map((review, index) => (
-                        <Card key={index} className="bg-it-extra-light">
+                        <Card
+                            key={index}
+                            className="bg-gradient-to-r from-it-light-primary to-it-primary border-[1px] border-it-light-primary"
+                        >
                             <CardContent className="pt-6">
-                                <p className="italic font-medium text-[17px]">
+                                <p className="italic font-medium text-it-destructive text-[17px]">
                                     "{review.comment}"
                                 </p>
                                 <p className="text-[16px] font-semibold text-gray-700 mt-4">

@@ -33,7 +33,7 @@ const KeyFeatures = () => {
     return (
         <section className="key-features-section py-40">
             <div className="max-w-7xl mx-auto text-center px-6">
-                <h2 className="text-3xl md:text-5xl font-extrabold text-it-medium-dark mb-10">
+                <h2 className="text-3xl md:text-5xl font-extrabold text-it-medium-dark mb-16">
                     Why Choose Us?
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

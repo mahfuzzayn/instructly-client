@@ -27,7 +27,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${railwaySans.className} antialiased bg-it-extra-light`}
+                className={`${railwaySans.className} antialiased`}
             >
                 <Providers>
                     <Toaster richColors={true} position="top-center" />

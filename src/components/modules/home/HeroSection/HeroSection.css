@@ -1,3 +1,9 @@
 .tutors-image-container {
     width: 100%;
 }
+
+.hero-section {
+    background-image: url("../../../../assets/images/blue-gradient-bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}

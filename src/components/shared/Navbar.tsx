@@ -11,7 +11,7 @@ import { protectedRoutes } from "@/constants";
 import Image from "next/image";
 
 const Navbar = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(true);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { user, setIsLoading, setUser } = useUser();
     const pathname = usePathname();
     const router = useRouter();

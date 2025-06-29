@@ -59,14 +59,14 @@ export function NavUser({
                     <DropdownMenuTrigger asChild>
                         <SidebarMenuButton
                             size="lg"
-                            className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+                            className="bg-white data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
                         >
                             <Avatar className="h-8 w-8 rounded-lg">
                                 <AvatarImage
                                     src={user?.profileUrl}
                                     alt={user?.name}
                                 />
-                                <AvatarFallback className="rounded-lg text-white font-bold">
+                                <AvatarFallback className="bg-it-light-dark rounded-lg text-white font-bold">
                                     {user?.name?.slice(0, 1)}
                                 </AvatarFallback>
                             </Avatar>
@@ -94,7 +94,7 @@ export function NavUser({
                                         src={user?.profileUrl}
                                         alt={user?.name}
                                     />
-                                    <AvatarFallback className="rounded-lg text-white font-bold">
+                                    <AvatarFallback className="bg-it-light-dark rounded-lg text-white font-bold">
                                         {user?.name
                                             ?.split(" ")
                                             .slice(0, 2)

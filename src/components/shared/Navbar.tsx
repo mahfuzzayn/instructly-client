@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useUser } from "@/context/UserContext";
 import { logout } from "@/services/AuthService";
-import logo from "../../assets/images/logo_2.png";
+import logo from "@/assets/images/logo_2.png";
 import { protectedRoutes } from "@/constants";
 import Image from "next/image";
 

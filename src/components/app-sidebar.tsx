@@ -111,14 +111,14 @@ export function AppSidebar({
 
     return (
         <Sidebar collapsible="icon" {...props}>
-            <SidebarContent>
+            <SidebarContent className="bg-it-medium-dark">
                 <NavMain
                     items={
                         user?.role === "tutor" ? data.tutorNav : data.studentNav
                     }
                 />
             </SidebarContent>
-            <SidebarFooter>
+            <SidebarFooter className="bg-it-medium-dark">
                 <NavUser
                     user={data.user}
                     setUser={setUser}

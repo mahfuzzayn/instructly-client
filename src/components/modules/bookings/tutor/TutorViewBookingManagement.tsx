@@ -11,7 +11,7 @@ const TutorViewBookingManagement = ({ booking }: { booking: IBooking }) => {
             {booking.paymentStatus !== "completed" &&
                 booking.status !== "waiting_for_payment" &&
                 booking.status !== "canceled_by_tutor" && (
-                    <h2 className="text-lg font-bold">Action</h2>
+                    <h2 className="text-xl text-it-medium-dark font-bold">Action</h2>
                 )}
             <div className="flex gap-x-3">
                 {booking.status !== "canceled_by_student" &&

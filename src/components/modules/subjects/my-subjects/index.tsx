@@ -82,7 +82,7 @@ const ManageSubjects = ({
             cell: ({ row }) => (
                 <div className="flex items-center space-x-3">
                     <button
-                        className="text-gray-500 hover:text-green-500"
+                        className="text-gray-700 hover:text-green-600"
                         title="Edit"
                         onClick={() =>
                             router.push(
@@ -93,7 +93,7 @@ const ManageSubjects = ({
                         <Edit className="w-5 h-5" />
                     </button>
                     <button
-                        className="text-gray-500 hover:text-red-500"
+                        className="text-gray-700 hover:text-red-600"
                         title="Delete"
                         onClick={() => {
                             setSelectedSubject(row.original._id);
@@ -110,7 +110,7 @@ const ManageSubjects = ({
     return (
         <div className="m-5">
             <div className="flex items-center justify-between mb-4">
-                <h1 className="text-xl font-bold">Manage Subjects</h1>
+                <h1 className="text-2xl text-it-medium-dark font-bold">Manage Subjects</h1>
                 <div className="flex items-center gap-2">
                     <Button
                         onClick={() =>
@@ -119,7 +119,7 @@ const ManageSubjects = ({
                             )
                         }
                         size="sm"
-                        className="hover:bg-it-medium-dark"
+                        className="bg-it-secondary hover:bg-it-light-dark"
                     >
                         Create Subject <Plus />
                     </Button>

@@ -132,7 +132,7 @@ const ManageTutorBookings = ({
     return (
         <div className="m-5">
             <div className="mb-4">
-                <h1 className="text-xl font-bold">Manage Bookings</h1>
+                <h1 className="text-2xl text-it-medium-dark font-bold">Manage Bookings</h1>
             </div>
             <ITTable columns={columns} data={bookings || []} />
             <TablePagination totalPage={meta?.totalPage} />

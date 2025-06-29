@@ -32,15 +32,23 @@ export function ITTable<TData, TValue>({
     });
 
     return (
-        <div className="rounded-md border">
+        <div
+            className="rounded-md overflow-hidden border"
+            style={{
+                backgroundImage: `url('https://res.cloudinary.com/dvd0x20di/image/upload/v1751180451/blue-gradient-bg_jcmikh.jpg')`,
+            }}
+        >
             <Table>
                 <TableHeader>
                     {table.getHeaderGroups().map((headerGroup) => (
-                        <TableRow key={headerGroup.id} className="bg-it-light-primary hover:bg-it-light-primary">
+                        <TableRow
+                            key={headerGroup.id}
+                            className="bg-it-light-dark hover:bg-it-secondary rounded-t-md select-none"
+                        >
                             {headerGroup.headers.map((header) => {
                                 return (
                                     <TableHead
-                                        className="font-bold text-gray-600"
+                                        className="font-bold text-white"
                                         key={header.id}
                                     >
                                         {header.isPlaceholder

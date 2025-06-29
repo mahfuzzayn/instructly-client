@@ -38,10 +38,17 @@ const DeleteModal = ({
 
     return (
         <Dialog open={open} onOpenChange={setIsOpen}>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent
+                className="sm:max-w-[425px] gap-6"
+                style={{
+                    backgroundImage: `url('https://res.cloudinary.com/dvd0x20di/image/upload/v1751180451/blue-gradient-bg_jcmikh.jpg')`,
+                }}
+            >
                 <DialogHeader>
-                    <DialogTitle>Delete Subject</DialogTitle>
-                    <DialogDescription className="text-black !mt-5">
+                    <DialogTitle className="text-[22px] text-it-medium-dark">
+                        Delete Subject
+                    </DialogTitle>
+                    <DialogDescription className="text-black text-[16px] !mt-4">
                         Are you sure to delete this subject? This cannot be
                         undone!
                     </DialogDescription>
@@ -50,7 +57,7 @@ const DeleteModal = ({
                     <Button
                         onClick={() => handleDelete(subjectId)}
                         type="submit"
-                        className="bg-red-500 hover:bg-red-700"
+                        className="bg-red-500 hover:bg-red-700 px-6"
                     >
                         Delete
                     </Button>

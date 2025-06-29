@@ -83,7 +83,7 @@ const MyReviews = ({ reviews, meta }: { reviews: IReview[]; meta: IMeta }) => {
                 <div className="flex items-center space-x-3">
                     <div className="flex items-center space-x-3">
                         <Button
-                            className="text-white hover:bg-it-primary"
+                            className="text-white bg-it-medium-primary hover:bg-it-primary"
                             title="View"
                             onClick={() =>
                                 router.push(
@@ -103,20 +103,24 @@ const MyReviews = ({ reviews, meta }: { reviews: IReview[]; meta: IMeta }) => {
     return (
         <div className="m-5">
             <div className="flex items-center justify-between mb-4">
-                <h1 className="text-xl font-bold">My Reviews</h1>
-                <div className="flex items-center gap-2">
-                    <Button
-                        onClick={() =>
-                            router.push(
-                                "/student/dashboard/reviews/give-review"
-                            )
-                        }
-                        size="sm"
-                        className="hover:bg-it-medium-dark"
-                    >
-                        Give Review <Plus />
-                    </Button>
-                </div>
+                <h1 className="text-2xl text-it-medium-dark font-bold">
+                    My Reviews
+                </h1>
+                {user && user?.role === "student" && (
+                    <div className="flex items-center gap-2">
+                        <Button
+                            onClick={() =>
+                                router.push(
+                                    "/student/dashboard/reviews/give-review"
+                                )
+                            }
+                            size="sm"
+                            className="bg-it-secondary hover:bg-it-light-dark"
+                        >
+                            Give Review <Plus />
+                        </Button>
+                    </div>
+                )}
             </div>
             <ITTable columns={columns} data={reviews || []} />
             <TablePagination totalPage={meta?.totalPage} />

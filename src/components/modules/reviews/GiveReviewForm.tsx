@@ -96,16 +96,18 @@ const GiveReviewForm = ({
     };
 
     return (
-        <div className="mx-auto rounded-xl flex-grow max-w-md w-full p-5 login-form">
+        <div className="mx-auto rounded-xl flex-grow w-full p-5 login-form">
             <Link href={`/student/dashboard/reviews`}>
-                <Button className="hover:bg-it-light-dark font-semibold mt-5 mb-10">
+                <Button className="bg-it-secondary hover:bg-it-light-dark font-semibold mb-10">
                     <ArrowLeft /> Reviews
                 </Button>
             </Link>
             <div className="flex items-center space-x-4">
                 <div className="space-y-1 mb-4">
-                    <h1 className="text-2xl font-bold">Give a Review</h1>
-                    <p className="font-normal text-sm">
+                    <h1 className="text-2xl text-it-medium-dark font-bold">
+                        Give a Review
+                    </h1>
+                    <p className="font-normal text-md">
                         Fill up the form and give your favorite tutor an
                         appreciation!
                     </p>
@@ -128,8 +130,8 @@ const GiveReviewForm = ({
                                     value={field.value}
                                     defaultValue=""
                                 >
-                                    <SelectTrigger className="mt-2 bg-white w-full">
-                                        <SelectValue placeholder="Select a grade" />
+                                    <SelectTrigger className="mt-2 !text-gray-700 font-medium bg-it-light-primary w-full">
+                                        <SelectValue placeholder="Select Tutor" />
                                     </SelectTrigger>
                                     <SelectContent>
                                         <SelectGroup>
@@ -165,7 +167,9 @@ const GiveReviewForm = ({
                                         type="number"
                                         min={0}
                                         max={5}
-                                        className="bg-white text-black"
+                                        step={0.1}
+                                        className="bg-it-light-primary text-black font-medium placeholder:text-gray-700"
+                                        placeholder="Select Rating"
                                         {...field}
                                         value={field.value || ""}
                                     />
@@ -184,8 +188,9 @@ const GiveReviewForm = ({
                                 </FormLabel>
                                 <FormControl>
                                     <Textarea
-                                        className="bg-white text-black"
+                                        className="bg-it-light-primary text-black font-medium placeholder:text-gray-700"
                                         {...field}
+                                        placeholder="Write down your comment here..."
                                         value={field.value || ""}
                                     />
                                 </FormControl>
@@ -200,13 +205,13 @@ const GiveReviewForm = ({
                                     .NEXT_PUBLIC_RECAPTCHA_CLIENT_KEY as string
                             }
                             onChange={handleReCaptcha}
-                            className="mx-auto mt-5 mb-3"
+                            className="mt-5 mb-3"
                         />
                     </div>
                     <Button
                         disabled={reCaptchaStatus ? false : true}
                         type="submit"
-                        className="w-full !mt-5 hover:bg-it-light-dark"
+                        className="!mt-5 hover:bg-it-light-dark font-semibold px-6"
                     >
                         {isSubmitting ? "Giving..." : "Give"}
                     </Button>

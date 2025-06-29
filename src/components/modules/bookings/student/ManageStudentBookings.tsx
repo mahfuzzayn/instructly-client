@@ -107,7 +107,7 @@ const ManageStudentBookings = ({
             cell: ({ row }) => (
                 <div className="flex items-center space-x-3">
                     <Button
-                        className="text-white hover:bg-it-primary"
+                        className="text-white bg-it-medium-primary hover:bg-it-primary"
                         title="View"
                         onClick={() =>
                             router.push(
@@ -126,7 +126,7 @@ const ManageStudentBookings = ({
                         row.original.status !== "canceled_by_student" &&
                         row.original.status !== "canceled_by_tutor" &&
                         row.original.status !== "completed" &&
-                        row.original.paymentStatus !== "completed"  && (
+                        row.original.paymentStatus !== "completed" && (
                             <StudentBookingStatusChange
                                 booking={row.original}
                             />
@@ -139,7 +139,9 @@ const ManageStudentBookings = ({
     return (
         <div className="m-5">
             <div className="mb-4">
-                <h1 className="text-xl font-bold">Manage Bookings</h1>
+                <h1 className="text-2xl text-it-medium-dark font-bold">
+                    Manage Bookings
+                </h1>
             </div>
             <ITTable columns={columns} data={bookings || []} />
             <TablePagination totalPage={meta?.totalPage} />

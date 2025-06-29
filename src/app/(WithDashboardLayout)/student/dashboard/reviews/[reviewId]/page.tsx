@@ -40,17 +40,18 @@ const ViewStudentReviewPage = async ({
 }) => {
     const { reviewId } = await params;
     const { data: review }: { data: IReview } = await getSingleReview(reviewId);
-    
+
     if (!review) {
         return (
             <div className="min-h-screen flex flex-col gap-5 justify-center items-center">
-                <h2 className="text-2xl font-bold">Invalid Review ID</h2>
-                <p>
-                    Review ID:{" "}
-                    <span className="font-semibold">{reviewId}</span>
+                <h2 className="text-2xl md:text-3xl text-it-medium-dark font-bold text-center">
+                    Invalid Review ID
+                </h2>
+                <p className="text-lg text-center">
+                    Review ID: <span className="font-semibold">{reviewId}</span>
                 </p>
                 <Link href="/student/dashboard/reviews">
-                    <Button className="hover:bg-it-light-dark font-semibold mb-5">
+                    <Button className="bg-it-secondary hover:bg-it-light-dark font-semibold mb-5">
                         <ArrowLeft /> Reviews
                     </Button>
                 </Link>
@@ -59,15 +60,19 @@ const ViewStudentReviewPage = async ({
     }
 
     return (
-        <div className="max-w-[960px] mx-auto p-5">
+        <div className="p-5">
             <Link href={`/student/dashboard/reviews`}>
-                <Button className="hover:bg-it-light-dark font-semibold mt-5 mb-10">
+                <Button className="bg-it-secondary hover:bg-it-light-dark font-semibold mb-10">
                     <ArrowLeft /> Reviews
                 </Button>
             </Link>
-            <div className="flex gap-x-1 items-center">
-                <h2 className="text-2xl font-bold">Review</h2>
-                <p>({review?._id})</p>
+            <div className="flex gap-x-1.5 items-center">
+                <h2 className="text-2xl text-it-medium-dark font-bold">
+                    Review
+                </h2>
+                <p>
+                    ( <span className="font-semibold">{review?._id}</span> )
+                </p>
             </div>
             <div className="space-y-3 mt-5">
                 <div>
@@ -95,7 +100,7 @@ const ViewStudentReviewPage = async ({
                 </div>
                 <div>
                     <p className="text-lg font-semibold">Comment</p>
-                    <Separator className="my-2" />
+                    <Separator className="my-2 bg-it-light-primary" />
                     <p className="font-normal text-justify leading-7">
                         {review?.comment}
                     </p>

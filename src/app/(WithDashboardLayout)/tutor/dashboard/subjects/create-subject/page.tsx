@@ -12,11 +12,7 @@ export const metadata: Metadata = {
 const CreateSubjectPage = async () => {
     const { data: tutor } = await getMe();
 
-    return (
-        <div className="max-w-[960px]">
-            <CreateSubjectForm tutor={tutor} />
-        </div>
-    );
+    return <CreateSubjectForm tutor={tutor} />;
 };
 
 export default CreateSubjectPage;

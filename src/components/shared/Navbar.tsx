@@ -77,11 +77,10 @@ const Navbar = () => {
                         ))}
                         {user?.email ? (
                             <>
-                                <Link
-                                    href={`/${user?.role}/dashboard`}
-                                    className="text-white hover:text-it-primary transition-all duration-300 group relative"
-                                >
-                                    Dashboard
+                                <li className="text-white hover:text-it-primary transition-all duration-300 group relative">
+                                    <Link href={`/${user?.role}/dashboard`}>
+                                        Dashboard
+                                    </Link>
                                     {user?.role === "tutor" ? (
                                         <ul className="mega-menu bg-it-medium-dark rounded-[8px] absolute -left-[18px] h-0 invisible opacity-70 pointer-events-none group-hover:opacity-100 group-hover:h-[180px] group-hover:visible group-hover:pointer-events-auto overflow-hidden transition-all duration-300 ease-in-out">
                                             <li>
@@ -151,7 +150,7 @@ const Navbar = () => {
                                                     Reviews
                                                 </Link>
                                             </li>
-                                             <li>
+                                            <li>
                                                 <Link
                                                     href={`${user.role}/dashboard/profile`}
                                                     className="block text-white hover:text-it-primary transition-all duration-300 py-1 px-6 pb-4 w-full"
@@ -161,7 +160,7 @@ const Navbar = () => {
                                             </li>
                                         </ul>
                                     )}
-                                </Link>
+                                </li>
                                 <button
                                     onClick={handleLogOut}
                                     className="text-white hover:text-it-primary transition-all duration-300"
@@ -185,8 +184,8 @@ const Navbar = () => {
                             isMenuOpen && user
                                 ? `${
                                       user.role === "tutor"
-                                          ? "h-[492px]"
-                                          : "h-[452px]"
+                                          ? "h-[495px]"
+                                          : "h-[455px]"
                                   } pointer-events-auto`
                                 : isMenuOpen
                                 ? "h-[240px] pointer-events-auto"
@@ -205,14 +204,15 @@ const Navbar = () => {
                         ))}
                         {user?.email ? (
                             <>
-                                <Link
-                                    href={`/${user?.role}/dashboard`}
-                                    className="text-white px-6 py-2 hover:bg-it-secondary transition-all group"
+                                <li
+                                    className="text-white hover:bg-it-secondary transition-all group"
                                     onClick={() => setIsMenuOpen(false)}
                                 >
-                                    Dashboard
+                                    <Link href={`/${user?.role}/dashboard`} className="block px-6 py-2">
+                                        Dashboard
+                                    </Link>
                                     {user?.role === "tutor" ? (
-                                        <ul className="mega-menu rounded-[8px] mt-2 mb-1 ml-2">
+                                        <ul className="mega-menu rounded-[8px] ml-6 mb-2">
                                             <li>
                                                 <Link
                                                     href={`${user.role}/dashboard`}
@@ -255,7 +255,7 @@ const Navbar = () => {
                                             </li>
                                         </ul>
                                     ) : (
-                                        <ul className="mega-menu rounded-[8px] mt-2 mb-1 ml-2">
+                                        <ul className="mega-menu rounded-[8px] mt-2 ml-6 mb-2">
                                             <li>
                                                 <Link
                                                     href={`${user.role}/dashboard`}
@@ -290,7 +290,7 @@ const Navbar = () => {
                                             </li>
                                         </ul>
                                     )}
-                                </Link>
+                                </li>
                                 <Link
                                     href="/"
                                     onClick={() => {

@@ -17,7 +17,7 @@ const TutorDetails = ({ tutor }: { tutor: ITutor }) => {
 
     return (
         <div className="flex justify-center pt-36 pb-24 m-10">
-            <section className="flex flex-col lg:flex-row gap-y-12 gap-20 max-w-[1980px]">
+            <section className="flex flex-col lg:flex-row gap-y-12 gap-20 max-w-[1920px]">
                 <div className="space-y-4">
                     <div className="flex mb-6">
                         <Link href="/tutors">

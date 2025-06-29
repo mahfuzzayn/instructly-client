@@ -49,13 +49,15 @@ const UpdateSubjectPage = async ({
     if (!subject) {
         return (
             <div className="min-h-screen flex flex-col gap-5 justify-center items-center">
-                <h2 className="text-2xl font-bold">Invalid Subject ID</h2>
-                <p>
+                <h2 className="text-2xl md:text-3xl text-it-medium-dark font-bold">
+                    Invalid Subject ID
+                </h2>
+                <p className="text-lg text-center">
                     Subject ID:{" "}
                     <span className="font-semibold">{subjectId}</span>
                 </p>
                 <Link href="/student/dashboard/subjects">
-                    <Button className="hover:bg-it-light-dark font-semibold mb-5">
+                    <Button className="bg-it-secondary hover:bg-it-light-dark font-semibold mb-5">
                         <ArrowLeft /> Subjects
                     </Button>
                 </Link>
@@ -63,11 +65,7 @@ const UpdateSubjectPage = async ({
         );
     }
 
-    return (
-        <div className="max-w-[960px]">
-            <UpdateSubjectForm tutor={tutor} subject={subject} />
-        </div>
-    );
+    return <UpdateSubjectForm tutor={tutor} subject={subject} />;
 };
 
 export default UpdateSubjectPage;

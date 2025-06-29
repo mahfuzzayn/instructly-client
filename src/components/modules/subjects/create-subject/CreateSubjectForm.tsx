@@ -88,16 +88,18 @@ const CreateSubjectForm = ({ tutor }: { tutor: ITutor }) => {
     };
 
     return (
-        <div className="mx-auto rounded-xl flex-grow max-w-md w-full p-5 pt-10 login-form">
+        <div className="rounded-xl flex-grow w-full p-5 login-form">
             <Link href={`/tutor/dashboard/subjects`}>
-                <Button className="hover:bg-it-light-dark font-semibold mt-5 mb-10">
+                <Button className="bg-it-secondary hover:bg-it-light-dark font-semibold mb-10">
                     <ArrowLeft /> Subjects
                 </Button>
             </Link>
             <div className="flex items-center space-x-4">
-                <div className="space-y-1 mb-4">
-                    <h1 className="text-2xl font-bold">Create a Subject</h1>
-                    <p className="font-normal text-sm">
+                <div className="space-y-2 mb-4">
+                    <h1 className="text-2xl text-it-medium-dark font-bold">
+                        Create a Subject
+                    </h1>
+                    <p className="font-normal text-md">
                         Fill up the form and make your subject ready to be
                         pursued!
                     </p>
@@ -119,7 +121,8 @@ const CreateSubjectForm = ({ tutor }: { tutor: ITutor }) => {
                                 <FormControl>
                                     <Input
                                         type="text"
-                                        className="bg-white text-black"
+                                        className="bg-it-light-primary text-black placeholder:text-black"
+                                        placeholder="Enter the subject name here..."
                                         {...field}
                                         value={field.value || ""}
                                     />
@@ -140,7 +143,7 @@ const CreateSubjectForm = ({ tutor }: { tutor: ITutor }) => {
                                     value={field.value}
                                     defaultValue=""
                                 >
-                                    <SelectTrigger className="mt-2 bg-white w-full">
+                                    <SelectTrigger className="mt-2 bg-it-light-primary w-full">
                                         <SelectValue placeholder="Select a grade" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -178,7 +181,7 @@ const CreateSubjectForm = ({ tutor }: { tutor: ITutor }) => {
                                     value={field.value}
                                     defaultValue=""
                                 >
-                                    <SelectTrigger className="mt-2 bg-white w-full">
+                                    <SelectTrigger className="mt-2 bg-it-light-primary w-full">
                                         <SelectValue placeholder="Select a grade" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -202,20 +205,20 @@ const CreateSubjectForm = ({ tutor }: { tutor: ITutor }) => {
                             </div>
                         )}
                     />
-                    <div className="flex my-3 w-full overflow-x-scroll sm:overflow-x-auto">
+                    <div className="flex my-3 overflow-x-scroll sm:overflow-x-auto">
                         <ReCAPTCHA
                             sitekey={
                                 process.env
                                     .NEXT_PUBLIC_RECAPTCHA_CLIENT_KEY as string
                             }
                             onChange={handleReCaptcha}
-                            className="mx-auto mt-5 mb-3"
+                            className="mt-5 mb-3"
                         />
                     </div>
                     <Button
                         disabled={reCaptchaStatus ? false : true}
                         type="submit"
-                        className="w-full !mt-5 hover:bg-it-light-dark"
+                        className="!mt-5 hover:bg-it-light-dark font-semibold px-6"
                     >
                         {isSubmitting ? "Creating..." : "Create"}
                     </Button>

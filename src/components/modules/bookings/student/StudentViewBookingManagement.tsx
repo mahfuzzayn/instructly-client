@@ -10,7 +10,7 @@ const StudentViewBookingManagement = ({ booking }: { booking: IBooking }) => {
         <div className="space-y-2">
             {booking.paymentStatus !== "completed" &&
                 booking.status === "waiting_for_payment" && (
-                    <h2 className="text-lg font-bold">Action</h2>
+                    <h2 className="text-xl text-it-medium-dark font-bold">Action</h2>
                 )}
             <div className="flex gap-x-3">
                 {booking.paymentStatus !== "completed" &&

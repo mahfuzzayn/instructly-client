@@ -81,11 +81,13 @@ const TutorBooking = ({ tutor }: { tutor: ITutor }) => {
 
     return (
         <>
-            <div className="space-y-2 mt-10">
-                <h2 className="text-lg font-bold">Booking Calendar</h2>
-                <div className="flex gap-6 md:gap-8">
+            <div className="space-y-2">
+                <h2 className="text-2xl text-it-medium-dark font-bold">
+                    Booking Calendar
+                </h2>
+                <div className="flex flex-col lg:flex-row gap-6 md:gap-8 !mt-4">
                     <div className="space-y-2">
-                        <h4 className="text-sm">Select Days of a Week</h4>
+                        <h4 className="text-sm font-medium">Select Days of a Week</h4>
                         <div className="flex flex-wrap gap-4">
                             {tutor?.availability?.map((a) => (
                                 <div
@@ -105,8 +107,8 @@ const TutorBooking = ({ tutor }: { tutor: ITutor }) => {
                                 </div>
                             ))}
                         </div>
-                        {totalSelectedHours > 0 && (
-                            <h2 className="text-lg !mt-5">
+                        {totalSelectedHours > 0 ? (
+                            <h2 className="text-lg text-white !mt-5 max-w-[280px] bg-it-light-dark rounded-md p-3">
                                 Total{" "}
                                 <span className="font-semibold">
                                     {totalWeeklySelectedHours} (Weekly Hours) x{" "}
@@ -114,14 +116,25 @@ const TutorBooking = ({ tutor }: { tutor: ITutor }) => {
                                     {totalSelectedHours} hours
                                 </span>
                             </h2>
+                        ) : (
+                            <h2 className="text-lg text-white !mt-5 max-w-[280px] italic bg-yellow-600 rounded-md p-3">
+                                Select{" "}
+                                <span className="font-semibold">Days</span>,{" "}
+                                <span className="font-semibold">
+                                    Start Date
+                                </span>{" "}
+                                & Choose{" "}
+                                <span className="font-semibold">Months</span> to
+                                see total hours.
+                            </h2>
                         )}
                     </div>
                     <div className="space-y-1">
-                        <h4 className="text-sm">Enter Months</h4>
+                        <h4 className="text-sm font-medium">Enter Months</h4>
                         <Input
                             type="number"
                             min="1"
-                            className="bg-white"
+                            className="bg-white max-w-[280px]"
                             value={selectedMonths || ""}
                             onChange={(e) =>
                                 setSelectedMonths(Number(e.target.value))
@@ -130,7 +143,7 @@ const TutorBooking = ({ tutor }: { tutor: ITutor }) => {
                     </div>
                 </div>
             </div>
-            <div className="space-y-1">
+            <div className="space-y-1 mt-4">
                 <h4 className="text-md font-bold">Start Date</h4>
                 <h4 className="text-sm">
                     Select the start date of your learning journey
@@ -153,8 +166,8 @@ const TutorBooking = ({ tutor }: { tutor: ITutor }) => {
                         <span className="font-semibold">
                             {tutor?.user?.name}
                         </span>{" "}
-                        for a booking was successful, wait for the tutor's response. Feel free
-                        to check your booking status on{" "}
+                        for a booking was successful, wait for the tutor's
+                        response. Feel free to check your booking status on{" "}
                         <Link
                             href={`/${user?.role}/dashboard/bookings/${booking?._id}`}
                             className="font-semibold underline"

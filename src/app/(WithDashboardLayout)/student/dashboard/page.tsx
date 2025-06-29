@@ -1,8 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
+
+import StudentOverview from "@/components/modules/students/StudentOverview";
 import { getMe } from "@/services/AuthService";
 import { IStudent } from "@/types";
 import { Metadata } from "next";
-import Link from "next/link";
 import React from "react";
 
 export const metadata: Metadata = {
@@ -17,35 +18,15 @@ const StudentDashboardPage = async () => {
     return (
         <main className="space-y-5 m-5">
             <section className="flex flex-col md:flex-row gap-5 w-full">
-                <div className="w-full bg-it-light-primary rounded-md p-5 space-y-2">
-                    <h2 className="text-2xl font-normal">
-                        <Link
-                            href={`/student/dashboard/bookings`}
-                            className="hover:underline hover:text-it-destructive"
-                        >
-                            Bookings
-                        </Link>
-                    </h2>
-                    <p className="text-4xl font-extrabold">
-                        {student?.bookingHistory?.length || 0}
-                    </p>
-                </div>
-                <div className="w-full bg-it-light-primary rounded-md p-5 space-y-2">
-                    <h2 className="text-2xl font-normal">
-                        <Link
-                            href={`/student/dashboard/reviews`}
-                            className="hover:underline hover:text-it-destructive"
-                        >
-                            Reviews
-                        </Link>
-                    </h2>
-                    <p className="text-4xl font-extrabold">
-                        {student?.reviewsGiven?.length || 0}
-                    </p>
-                </div>
+                <StudentOverview student={student} />
             </section>
             <section className="flex gap-5 w-full">
-                <div className="w-full bg-it-light-primary rounded-md p-5 space-y-4">
+                <div
+                    className="w-full rounded-md p-5 space-y-4 border-[1px] border-[#fffff350]"
+                    style={{
+                        backgroundImage: `url('https://res.cloudinary.com/dvd0x20di/image/upload/v1751180451/blue-gradient-bg_jcmikh.jpg')`,
+                    }}
+                >
                     <h2 className="text-2xl font-normal">Bio</h2>
                     <p className="text-xl font-extrabold">
                         {student?.bio ? (

@@ -12,12 +12,12 @@ const PaymentSuccessPage = async () => {
                     backgroundImage: `url('https://res.cloudinary.com/dvd0x20di/image/upload/v1751180451/blue-gradient-bg_jcmikh.jpg')`,
                 }}
             >
-                <div className="flex gap-x-2 items-center">
+                <div className="flex gap-x-2 md:gap-x-3 items-center">
                     <Image
                         src={CrossCheck}
-                        height={60}
-                        width={60}
-                        className="h-[40px] w-[40px] md:h-[60px] md:w-[60px]"
+                        height={50}
+                        width={50}
+                        className="h-[40px] w-[40px] md:h-[50px] md:w-[50px]"
                         alt="Loading"
                     />
                     <h2 className="text-3xl md:text-4xl text-destructive font-bold">

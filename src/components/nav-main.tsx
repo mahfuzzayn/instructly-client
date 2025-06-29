@@ -40,7 +40,7 @@ export function NavMain({
     return (
         <SidebarGroup>
             <SidebarGroupLabel className="my-2">
-                <div className="flex justify-start items-center gap-x-2 p-2">
+                <Link href="/" className="flex justify-start items-center gap-x-2 p-2">
                     <Image
                         src={logo}
                         height={40}
@@ -50,7 +50,7 @@ export function NavMain({
                     <h2 className="text-2xl text-white font-extrabold">
                         Instructly
                     </h2>
-                </div>
+                </Link>
             </SidebarGroupLabel>
             <SidebarGroupLabel className="text-white text-sm font-semibold">
                 Services
@@ -116,7 +116,7 @@ export function NavMain({
                                             >
                                                 <SidebarMenuSubButton
                                                     asChild
-                                                    className="hover:bg-it-light-dark"
+                                                    className="hover:bg-it-light-dark active:bg-it-light-dark"
                                                 >
                                                     <Link href={subItem.url}>
                                                         <span className="text-white">

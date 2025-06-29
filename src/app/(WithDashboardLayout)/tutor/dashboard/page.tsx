@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import TutorOverview from "@/components/modules/tutors/TutorOverview";
 import { bangladeshiCurrencyFormatter } from "@/lib/currencyFormatter";
 import { getMe } from "@/services/AuthService";
 import { getMySubjects } from "@/services/Tutor";
@@ -20,14 +21,24 @@ const TutorDashboardPage = async () => {
     return (
         <main className="space-y-5 m-5">
             <section className="flex flex-col md:flex-row gap-5 w-full">
-                <div className="w-full bg-it-light-primary rounded-md p-5 space-y-2">
+                <div
+                    className="w-full rounded-md p-5 space-y-2 border-[1px] border-[#fffff350]"
+                    style={{
+                        backgroundImage: `url('https://res.cloudinary.com/dvd0x20di/image/upload/v1751180451/blue-gradient-bg_jcmikh.jpg')`,
+                    }}
+                >
                     <h2 className="text-2xl font-normal">Earnings</h2>
                     <p className="text-4xl font-extrabold">
                         {bangladeshiCurrencyFormatter(tutor?.earnings) ||
                             `0 Taka`}
                     </p>
                 </div>
-                <div className="w-full bg-it-light-primary rounded-md p-5 space-y-2">
+                <div
+                    className="w-full rounded-md p-5 space-y-2 border-[1px] border-[#fffff350]"
+                    style={{
+                        backgroundImage: `url('https://res.cloudinary.com/dvd0x20di/image/upload/v1751180451/blue-gradient-bg_jcmikh.jpg')`,
+                    }}
+                >
                     <h2 className="text-2xl font-normal">Hourly Rate</h2>
                     <p className="text-4xl font-extrabold">
                         {tutor?.hourlyRate || 0} Taka/hr
@@ -35,7 +46,12 @@ const TutorDashboardPage = async () => {
                 </div>
             </section>
             <section className="flex gap-5 w-full">
-                <div className="w-full bg-it-light-primary rounded-md p-5 space-y-4">
+                <div
+                    className="w-full rounded-md p-5 space-y-4 border-[1px] border-[#fffff350]"
+                    style={{
+                        backgroundImage: `url('https://res.cloudinary.com/dvd0x20di/image/upload/v1751180451/blue-gradient-bg_jcmikh.jpg')`,
+                    }}
+                >
                     <h2 className="text-2xl font-normal">
                         <Link
                             href={`/tutor/dashboard/subjects`}
@@ -65,35 +81,15 @@ const TutorDashboardPage = async () => {
                 </div>
             </section>
             <section className="flex flex-col md:flex-row gap-5 w-full">
-                <div className="w-full bg-it-light-primary rounded-md p-5 space-y-2">
-                    <h2 className="text-2xl font-normal">
-                        <Link
-                            href={`/tutor/dashboard/bookings`}
-                            className="hover:underline hover:text-it-destructive"
-                        >
-                            Bookings
-                        </Link>
-                    </h2>
-                    <p className="text-4xl font-extrabold">
-                        {tutor?.bookings?.length}
-                    </p>
-                </div>
-                <div className="w-full bg-it-light-primary rounded-md p-5 space-y-2">
-                    <h2 className="text-2xl font-normal">
-                        <Link
-                            href={`/tutor/dashboard/reviews`}
-                            className="hover:underline hover:text-it-destructive"
-                        >
-                            Reviews
-                        </Link>
-                    </h2>
-                    <p className="text-4xl font-extrabold">
-                        {tutor?.reviews?.length}
-                    </p>
-                </div>
+                <TutorOverview tutor={tutor} />
             </section>
             <section className="flex gap-5 w-full">
-                <div className="w-full bg-it-light-primary rounded-md p-5 space-y-4">
+                <div
+                    className="w-full rounded-md p-5 space-y-4 border-[1px] border-[#fffff350]"
+                    style={{
+                        backgroundImage: `url('https://res.cloudinary.com/dvd0x20di/image/upload/v1751180451/blue-gradient-bg_jcmikh.jpg')`,
+                    }}
+                >
                     <h2 className="text-2xl font-normal">Bio</h2>
                     <p className="text-xl font-extrabold">
                         {tutor?.bio ? (

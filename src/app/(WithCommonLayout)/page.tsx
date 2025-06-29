@@ -8,6 +8,7 @@ import { getAllSubjects } from "@/services/Subject";
 import Subjects from "@/components/modules/home/Subjects/Subjects";
 import Tutors from "@/components/modules/home/Tutors/Tutors";
 import Newsletter from "@/components/modules/home/Newsletter/Newsletter";
+import Blogs from "@/components/modules/home/Blogs/Blogs";
 
 export const metadata: Metadata = {
     title: "Instructly",
@@ -27,6 +28,7 @@ const HomePage = async () => {
             <KeyFeatures />
             <Testimonials />
             <GetStarted />
+            <Blogs />
             <Newsletter />
         </div>
     );

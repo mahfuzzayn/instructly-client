@@ -9,7 +9,7 @@ export const metadata: Metadata = {
         "Get the latest updates, announcements, and features from our platform.",
 };
 
-const NewsPage = async () => {
+const BlogsPage = async () => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/news`, {
         cache: "force-cache",
     });
@@ -22,4 +22,4 @@ const NewsPage = async () => {
     );
 };
 
-export default NewsPage;
+export default BlogsPage;

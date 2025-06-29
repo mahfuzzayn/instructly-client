@@ -45,8 +45,8 @@ const Navbar = () => {
             label: "FAQ",
         },
         {
-            href: "/news",
-            label: "News",
+            href: "/blogs",
+            label: "Blogs",
         },
     ];
 
@@ -83,7 +83,7 @@ const Navbar = () => {
                                 >
                                     Dashboard
                                     {user?.role === "tutor" ? (
-                                        <ul className="mega-menu bg-it-medium-dark rounded-[8px] absolute -left-[18px] h-0 invisible opacity-70 pointer-events-none group-hover:opacity-100 group-hover:h-[150px] group-hover:visible group-hover:pointer-events-auto overflow-hidden transition-all duration-300 ease-in-out">
+                                        <ul className="mega-menu bg-it-medium-dark rounded-[8px] absolute -left-[18px] h-0 invisible opacity-70 pointer-events-none group-hover:opacity-100 group-hover:h-[180px] group-hover:visible group-hover:pointer-events-auto overflow-hidden transition-all duration-300 ease-in-out">
                                             <li>
                                                 <Link
                                                     href={`${user.role}/dashboard`}
@@ -111,14 +111,22 @@ const Navbar = () => {
                                             <li>
                                                 <Link
                                                     href={`${user.role}/dashboard/reviews`}
-                                                    className="block text-white hover:text-it-primary transition-all duration-300 py-1 px-6 pb-4 w-full"
+                                                    className="block text-white hover:text-it-primary transition-all duration-300 py-1 px-6 w-full"
                                                 >
                                                     Reviews
                                                 </Link>
                                             </li>
+                                            <li>
+                                                <Link
+                                                    href={`${user.role}/dashboard/profile`}
+                                                    className="block text-white hover:text-it-primary transition-all duration-300 py-1 px-6 pb-4 w-full"
+                                                >
+                                                    Profile
+                                                </Link>
+                                            </li>
                                         </ul>
                                     ) : (
-                                        <ul className="mega-menu bg-it-medium-dark rounded-[8px] absolute -left-[18px] h-0 invisible opacity-70 pointer-events-none group-hover:opacity-100 group-hover:h-[120px] group-hover:visible group-hover:pointer-events-auto overflow-hidden transition-all duration-300 ease-in-out">
+                                        <ul className="mega-menu bg-it-medium-dark rounded-[8px] absolute -left-[18px] h-0 invisible opacity-70 pointer-events-none group-hover:opacity-100 group-hover:h-[150px] group-hover:visible group-hover:pointer-events-auto overflow-hidden transition-all duration-300 ease-in-out">
                                             <li>
                                                 <Link
                                                     href={`${user.role}/dashboard`}
@@ -138,9 +146,17 @@ const Navbar = () => {
                                             <li>
                                                 <Link
                                                     href={`${user.role}/dashboard/reviews`}
-                                                    className="block text-white hover:text-it-primary transition-all duration-300 py-1 px-6 pb-4 w-full"
+                                                    className="block text-white hover:text-it-primary transition-all duration-300 py-1 px-6 w-full"
                                                 >
                                                     Reviews
+                                                </Link>
+                                            </li>
+                                             <li>
+                                                <Link
+                                                    href={`${user.role}/dashboard/profile`}
+                                                    className="block text-white hover:text-it-primary transition-all duration-300 py-1 px-6 pb-4 w-full"
+                                                >
+                                                    Profile
                                                 </Link>
                                             </li>
                                         </ul>
@@ -169,8 +185,8 @@ const Navbar = () => {
                             isMenuOpen && user
                                 ? `${
                                       user.role === "tutor"
-                                          ? "h-[452px]"
-                                          : "h-[412px]"
+                                          ? "h-[492px]"
+                                          : "h-[452px]"
                                   } pointer-events-auto`
                                 : isMenuOpen
                                 ? "h-[240px] pointer-events-auto"
@@ -229,6 +245,14 @@ const Navbar = () => {
                                                     Reviews
                                                 </Link>
                                             </li>
+                                            <li>
+                                                <Link
+                                                    href={`${user.role}/dashboard/profile`}
+                                                    className="block text-white hover:bg-it-primary transition-all duration-300 py-2 px-4 w-full"
+                                                >
+                                                    Profile
+                                                </Link>
+                                            </li>
                                         </ul>
                                     ) : (
                                         <ul className="mega-menu rounded-[8px] mt-2 mb-1 ml-2">
@@ -254,6 +278,14 @@ const Navbar = () => {
                                                     className="block text-white hover:bg-it-primary transition-all duration-300 py-2 px-4 w-full"
                                                 >
                                                     Reviews
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link
+                                                    href={`${user.role}/dashboard/profile`}
+                                                    className="block text-white hover:bg-it-primary transition-all duration-300 py-2 px-4 w-full"
+                                                >
+                                                    Profile
                                                 </Link>
                                             </li>
                                         </ul>

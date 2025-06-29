@@ -56,17 +56,20 @@ const faqData = [
 
 const faqPage = () => {
     return (
-        <div className="max-w-4xl mx-auto mt-20 pb-24 px-5">
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-center">
+        <div className="max-w-4xl mx-auto pt-36 pb-24 px-5">
+            <h1 className="text-3xl md:text-5xl font-bold text-it-medium-dark mb-6 text-center">
                 Frequently Asked Questions
             </h1>
             <div className="mt-10">
                 {faqData.map((category, categoryIndex) => (
                     <div
                         key={categoryIndex}
-                        className="mb-8 bg-it-medium-primary p-6 rounded-md"
+                        className="mb-8 p-6 rounded-md border-[1px] border-[#fffff367]"
+                        style={{
+                            backgroundImage: `url('https://res.cloudinary.com/dvd0x20di/image/upload/v1751180451/blue-gradient-bg_jcmikh.jpg')`,
+                        }}
                     >
-                        <h2 className="text-xl font-semibold mb-4">
+                        <h2 className="text-2xl text-it-secondary font-bold mb-4">
                             {category.category}
                         </h2>
                         <Accordion type="single" collapsible>

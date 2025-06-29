@@ -22,15 +22,15 @@ const TutorsPage = async ({ searchParams }: { searchParams: SearchParams }) => {
     const { data: subjects } = await getAllSubjects();
 
     return (
-        <main className="mt-20 mb-32">
-            <h1 className="text-2xl md:text-3xl lg:text-4xl text-center font-bold mb-10">
+        <main className="pt-36 pb-32 max-w-[1980px] mx-auto">
+            <h1 className="text-3xl md:text-5xl text-center font-bold text-it-medium-dark mb-16">
                 Explore Tutors of Instructly
             </h1>
             <div className="lg:flex gap-8">
-                <div className="w-full max-w-xs">
+                <div className="w-full max-w-xs bg-it-light-dark lg:ml-6 lg:rounded-r-md">
                     <FilterSidebar subjects={subjects} />
                 </div>
-                <div>
+                <div className="w-full">
                     <Tutors tutors={tutors} meta={meta} />
                 </div>
             </div>

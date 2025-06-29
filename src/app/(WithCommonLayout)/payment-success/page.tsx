@@ -15,23 +15,29 @@ const PaymentSuccessPage = async ({
 
     if (!booking) {
         return (
-            <div className="min-h-screen flex justify-center items-center px-4">
-                <div className="bg-it-light-primary space-y-10 p-10 rounded-xl">
+            <div className="min-h-screen pt-36 pb-20 flex justify-center items-center px-4">
+                <div
+                    className="space-y-5 p-10 rounded-xl border-[1px] border-[#fffff36f]"
+                    style={{
+                        backgroundImage: `url('https://res.cloudinary.com/dvd0x20di/image/upload/v1751180451/blue-gradient-bg_jcmikh.jpg')`,
+                    }}
+                >
                     <div className="flex gap-x-2 items-center">
                         <Image
                             src={CrossCheck}
-                            height={40}
-                            width={40}
+                            height={60}
+                            width={60}
+                            className="h-[40px] w-[40px] md:h-[60px] md:w-[60px]"
                             alt="Loading"
                         />
-                        <h2 className="text-2xl text-destructive font-bold">
+                        <h2 className="text-3xl md:text-4xl text-destructive font-bold">
                             Invalid Transaction ID
                         </h2>
                     </div>
-                    <p className="max-w-sm text-it-secondary">
-                        Note: If a new payment was initiated then previous
-                        transaction ID of your booking may have been changed,
-                        head over to{" "}
+                    <p className="max-w-lg text-it-secondary">
+                        <span className="font-semibold">Note:</span> If a new
+                        payment was initiated then previous transaction ID of
+                        your booking may have been changed, head over to{" "}
                         <Link
                             href="/student/dashboard/bookings"
                             className="font-semibold underline"
@@ -52,17 +58,18 @@ const PaymentSuccessPage = async ({
     }
 
     return (
-        <div className="min-h-screen flex justify-center items-center">
+        <div className="min-h-screen pt-36 pb-20 flex justify-center items-center">
             <div className="bg-it-light-primary space-y-10 p-10 rounded-xl">
                 <div className="flex gap-x-2 items-center">
                     <Image
                         src={LiquidCheck}
-                        height={40}
-                        width={40}
+                        height={60}
+                        width={60}
+                        className="h-[40px] w-[40px] md:h-[60px] md:w-[60px]"
                         alt="Loading"
                     />
-                    <h2 className="text-2xl text-destructive font-bold">
-                        Payment Successful
+                    <h2 className="text-3xl md:text-4xl text-destructive font-bold">
+                        Payment Success
                     </h2>
                 </div>
                 <p className="text-it-secondary text-center">

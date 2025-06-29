@@ -90,13 +90,13 @@ export default function FilterSidebar({ subjects }: { subjects: ISubject[] }) {
     };
 
     return (
-        <section>
+        <section className="filter-products-section">
             <div
-                className={`fixed top-0 ${
+                className={`fixed top-0 z-[1020] ${
                     isFilterMenuOpen
                         ? "left-[0px]"
                         : "left-[-400px]"
-                } overflow-y-scroll lg:overflow-y-auto lg:static p-6 h-full space-y-4 w-[300px] lg:w-auto lg:ml-6 lg:rounded-md text-white bg-it-light-dark z-[5] transition-all`}
+                } overflow-y-scroll lg:overflow-y-auto lg:static p-6 h-full space-y-4 w-[300px] lg:w-auto bg-it-light-dark text-white z-[5] transition-all lg:rounded-md`}
             >
                 <div className="flex items-center justify-between">
                     <h2 className="text-2xl font-bold">Filter</h2>
@@ -234,7 +234,7 @@ export default function FilterSidebar({ subjects }: { subjects: ISubject[] }) {
                     </div>
                 </div>
             </div>
-            <div className="fixed lg:hidden top-24 left-0">
+            <div className="fixed lg:hidden top-24 left-0 z-[1000]">
                 <Button
                     className="flex items-center gap-x-2 bg-it-medium-dark hover:bg-it-destructive p-1 pr-2 text-white rounded-l-none rounded-r-[8px]"
                     onClick={() => setIsFilterMenuOpen(true)}

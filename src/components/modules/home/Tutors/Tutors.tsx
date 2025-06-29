@@ -29,15 +29,19 @@ const Tutors = ({ tutors }: { tutors: ITutor[] }) => {
                                 <h3 className="text-xl font-bold">
                                     {tutor.user.name}
                                 </h3>
-                                <p className="flex gap-x-2 text-[15px] font-semibold group-hover:text-white">
-                                    Average Rating:
-                                    <span className="text-it-secondary">{tutor?.averageRating}</span>
+                                <div className="flex gap-x-2 text-[15px] font-semibold group-hover:text-white">
+                                    <p className="flex gap-x-1">
+                                        Average Rating:
+                                        <span className="text-it-secondary">
+                                            {tutor?.averageRating}
+                                        </span>
+                                    </p>
                                     <Rating
                                         style={{ width: 80 }}
                                         value={tutor?.averageRating}
                                         readOnly
                                     />
-                                </p>
+                                </div>
                                 <p className="text-[15px] font-semibold group-hover:text-white">
                                     Hourly Rate:{" "}
                                     <span className="text-it-secondary">

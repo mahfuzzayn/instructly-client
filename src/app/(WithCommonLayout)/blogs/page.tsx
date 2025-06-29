@@ -1,12 +1,12 @@
-import ITNews from "@/components/modules/news";
+import ITBlogs from "@/components/modules/blogs";
 import { IArticle } from "@/types";
 import { Metadata } from "next";
 import React from "react";
 
 export const metadata: Metadata = {
-    title: "News ‣ Instructly",
+    title: "Blogs ‣ Instructly",
     description:
-        "Get the latest updates, announcements, and features from our platform.",
+        "Discover insights, tips, and inspiring stories on topics that matter. Join us on a journey of learning and discovery.",
 };
 
 const BlogsPage = async () => {
@@ -14,10 +14,10 @@ const BlogsPage = async () => {
         cache: "force-cache",
     });
     const { data: news }: { data: { articles: IArticle[] } } = await res.json();
-
+    
     return (
         <section className="min-h-screen">
-            <ITNews articles={news.articles}></ITNews>
+            <ITBlogs articles={news.articles} />
         </section>
     );
 };

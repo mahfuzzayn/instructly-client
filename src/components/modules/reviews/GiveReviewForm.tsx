@@ -211,7 +211,7 @@ const GiveReviewForm = ({
                     <Button
                         disabled={reCaptchaStatus ? false : true}
                         type="submit"
-                        className="!mt-5 hover:bg-it-light-dark font-semibold px-6"
+                        className="!mt-5 bg-it-secondary hover:bg-it-light-dark font-semibold px-6"
                     >
                         {isSubmitting ? "Giving..." : "Give"}
                     </Button>

@@ -15,7 +15,7 @@ import { getMe } from "@/services/AuthService";
 import logo from "../../assets/images/logo.png";
 import Image from "next/image";
 
-export default async function TutorDashboardLayout({
+export default async function DashboardLayout({
     children,
 }: {
     children: React.ReactNode;
@@ -26,7 +26,7 @@ export default async function TutorDashboardLayout({
         ...data.user,
         profileUrl: data?.profileUrl,
     };
-
+    
     return (
         <SidebarProvider>
             <AppSidebar user={user} />
@@ -50,7 +50,9 @@ export default async function TutorDashboardLayout({
                                         />
                                         <span className="font-medium hidden md:block">
                                             Instructly{" "}
-                                            {user?.role === "tutor"
+                                            {user?.role === "admin"
+                                                ? "Admin Dashboard Management"
+                                                : user?.role === "tutor"
                                                 ? "Tutor Dashboard Management"
                                                 : user?.role === "student"
                                                 ? "Student Dashboard Management"

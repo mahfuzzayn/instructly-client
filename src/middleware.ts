@@ -5,6 +5,7 @@ type Role = keyof typeof roleBasedPrivateRoutes;
 
 const authRoutes = ["/login", "/register"];
 const roleBasedPrivateRoutes = {
+    admin: [/^\/admin/, /^\/admin\/dashboard/],
     tutor: [/^\/tutor/, /^\/tutor\/dashboard/, /^\/create-subject/],
     student: [
         /^\/student/,
@@ -47,12 +48,23 @@ export const config = {
         "/login",
         "/payment-success",
         "/payment-failed",
-        "/create-subject",
+
+        "/admin",
+        "/admin/:page",
+        "/admin/:page/:page",
+        "/admin/:page/:page/:page",
+        "/admin/:page/:page/:page/:page",
+
         "/tutor",
         "/tutor/:page",
         "/tutor/:page/:page",
         "/tutor/:page/:page/:page",
+        "/tutor/:page/:page/:page/:page",
+
         "/student",
         "/student/:page",
+        "/student/:page/:page",
+        "/student/:page/:page/:page",
+        "/student/:page/:page/:page/:page",
     ],
 };

@@ -20,7 +20,6 @@ import {
     useForm,
 } from "react-hook-form";
 import { toast } from "sonner";
-import { createSubjectSchema } from "./createSubjectValidation";
 import {
     Select,
     SelectContent,
@@ -30,22 +29,29 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { gradeLevels, subjectCategories } from "@/constants";
-import { ITutor } from "@/types";
+import { ISubject, ITutor } from "@/types";
 import ReCAPTCHA from "react-google-recaptcha";
 import { reCaptchaTokenVerification } from "@/services/AuthService";
-import { createSubject } from "@/services/Subject";
+import { updateSubjectSchema } from "./updateSubjectSchema";
+import { updateSubject } from "@/services/Subject";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
-const CreateSubjectForm = ({ tutor }: { tutor: ITutor }) => {
+const UpdateSubjectFormByTutor = ({
+    tutor,
+    subject,
+}: {
+    tutor: ITutor;
+    subject: ISubject;
+}) => {
     const [reCaptchaStatus, setReCaptchaStatus] = useState(false);
 
     const form = useForm({
-        resolver: zodResolver(createSubjectSchema),
+        resolver: zodResolver(updateSubjectSchema),
         defaultValues: {
-            name: undefined,
-            category: "Science",
-            gradeLevel: "High School",
+            name: subject?.name,
+            category: subject?.category,
+            gradeLevel: subject?.gradeLevel,
         },
     });
 
@@ -62,7 +68,7 @@ const CreateSubjectForm = ({ tutor }: { tutor: ITutor }) => {
             };
 
             if (reCaptchaStatus) {
-                const res = await createSubject(subjectData);
+                const res = await updateSubject(subject?._id, subjectData);
 
                 if (res.success) {
                     toast.success(res?.message);
@@ -97,11 +103,11 @@ const CreateSubjectForm = ({ tutor }: { tutor: ITutor }) => {
             <div className="flex items-center space-x-4">
                 <div className="space-y-2 mb-4">
                     <h1 className="text-2xl text-it-medium-dark font-bold">
-                        Create a Subject
+                        Update Subject:{" "}
+                        <span className="font-semibold">{subject?.name}</span>
                     </h1>
                     <p className="font-normal text-md">
-                        Fill up the form and make your subject ready to be
-                        pursued!
+                        Make changes to your published subject!
                     </p>
                 </div>
             </div>
@@ -121,8 +127,7 @@ const CreateSubjectForm = ({ tutor }: { tutor: ITutor }) => {
                                 <FormControl>
                                     <Input
                                         type="text"
-                                        className="bg-it-light-primary text-black placeholder:text-black"
-                                        placeholder="Enter the subject name here..."
+                                        className="bg-it-light-primary text-black"
                                         {...field}
                                         value={field.value || ""}
                                     />
@@ -205,7 +210,7 @@ const CreateSubjectForm = ({ tutor }: { tutor: ITutor }) => {
                             </div>
                         )}
                     />
-                    <div className="flex my-3 overflow-x-scroll sm:overflow-x-auto">
+                    <div className="flex my-3 w-full overflow-x-scroll sm:overflow-x-auto">
                         <ReCAPTCHA
                             sitekey={
                                 process.env
@@ -218,9 +223,9 @@ const CreateSubjectForm = ({ tutor }: { tutor: ITutor }) => {
                     <Button
                         disabled={reCaptchaStatus ? false : true}
                         type="submit"
-                        className="!mt-5 hover:bg-it-light-dark font-semibold px-6"
+                        className="!mt-5 bg-it-secondary hover:bg-it-light-dark font-semibold px-6"
                     >
-                        {isSubmitting ? "Creating..." : "Create"}
+                        {isSubmitting ? "Updating..." : "Update"}
                     </Button>
                 </form>
             </Form>
@@ -228,4 +233,4 @@ const CreateSubjectForm = ({ tutor }: { tutor: ITutor }) => {
     );
 };
 
-export default CreateSubjectForm;
+export default UpdateSubjectFormByTutor;

@@ -55,7 +55,7 @@ const ITBlogs = ({ articles }: { articles: IArticle[] }) => {
             <div className="flex items-center gap-x-2 mt-16 mb-8">
                 <Input
                     placeholder="Search articles by just typing characters..."
-                    className="bg-gray-100 text-black py-5 placeholder:text-black"
+                    className="bg-gray-100 text-black py-5 placeholder:text-gray-500"
                     value={searchQuery}
                     onChange={handleSearch}
                 />

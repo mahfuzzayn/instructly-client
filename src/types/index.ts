@@ -1,5 +1,6 @@
 export * from "./meta"
 export * from "./user"
+export * from "./admin"
 export * from "./tutor"
 export * from "./subject"
 export * from "./student"

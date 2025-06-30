@@ -1,4 +1,4 @@
-import UpdateSubjectForm from "@/components/modules/subjects/update-subject/UpdateSubjectForm";
+import UpdateSubjectFormByTutor from "@/components/modules/subjects/tutor/update-subject/UpdateSubjectForm";
 import { Button } from "@/components/ui/button";
 import { getMe } from "@/services/AuthService";
 import { getSingleSubject } from "@/services/Subject";
@@ -65,7 +65,7 @@ const UpdateSubjectPage = async ({
         );
     }
 
-    return <UpdateSubjectForm tutor={tutor} subject={subject} />;
+    return <UpdateSubjectFormByTutor tutor={tutor} subject={subject} />;
 };
 
 export default UpdateSubjectPage;

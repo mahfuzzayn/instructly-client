@@ -1,4 +1,4 @@
-import ManageSubjects from "@/components/modules/subjects/my-subjects";
+import TutorManageSubjects from "@/components/modules/subjects/tutor/my-subjects";
 import { getMySubjects } from "@/services/Tutor";
 import { Metadata } from "next";
 import React from "react";
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
         "Add or edit subjects and courses you specialize in as a tutor to better serve your students.",
 };
 
-const SubjectsPage = async ({
+const TutorSubjectsPage = async ({
     searchParams,
 }: {
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -23,9 +23,9 @@ const SubjectsPage = async ({
 
     return (
         <>
-            <ManageSubjects subjects={subjects} meta={meta} />
+            <TutorManageSubjects subjects={subjects} meta={meta} />
         </>
     );
 };
 
-export default SubjectsPage;
+export default TutorSubjectsPage;

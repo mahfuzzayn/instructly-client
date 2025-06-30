@@ -125,8 +125,8 @@ const TutorProfile = ({ tutor }: { tutor: ITutor }) => {
     };
 
     return (
-        <div className="rounded-xl flex-grow max-w-md w-full p-5 login-form">
-            <div className="flex justify-center mb-5">
+        <div className="rounded-xl flex-grow w-full p-5 login-form">
+            <div className="flex justify-start mb-5">
                 {imagePreview ? (
                     <ImagePreviewer
                         className="flex flex-wrap gap-4"
@@ -159,7 +159,8 @@ const TutorProfile = ({ tutor }: { tutor: ITutor }) => {
                                 <FormControl>
                                     <Input
                                         type="text"
-                                        className="bg-white text-black"
+                                        className="bg-it-light-primary text-black placeholder:text-gray-500"
+                                        placeholder="Enter your name"
                                         {...field}
                                         value={field.value || ""}
                                     />
@@ -177,7 +178,8 @@ const TutorProfile = ({ tutor }: { tutor: ITutor }) => {
                                 <FormControl>
                                     <Input
                                         type="text"
-                                        className="bg-white text-black"
+                                        className="bg-it-light-primary text-black placeholder:text-gray-500"
+                                        placeholder="Enter your bio"
                                         {...field}
                                         value={field.value || ""}
                                     />
@@ -197,7 +199,8 @@ const TutorProfile = ({ tutor }: { tutor: ITutor }) => {
                                 <FormControl>
                                     <Input
                                         type="text"
-                                        className="bg-white text-black"
+                                        className="bg-it-light-primary text-black placeholder:text-gray-500"
+                                        placeholder="Enter your hourly rate"
                                         {...field}
                                         value={field.value || ""}
                                     />
@@ -223,7 +226,8 @@ const TutorProfile = ({ tutor }: { tutor: ITutor }) => {
                                             <FormControl>
                                                 <Input
                                                     type="text"
-                                                    className="!py-[18px] bg-white text-black"
+                                                    className="bg-it-light-primary text-black placeholder:text-gray-500"
+                                                    placeholder="Enter your area "
                                                     {...field}
                                                     value={field.value || ""}
                                                 />
@@ -244,7 +248,7 @@ const TutorProfile = ({ tutor }: { tutor: ITutor }) => {
                                             value={field.value}
                                             defaultValue=""
                                         >
-                                            <SelectTrigger className="bg-white w-full">
+                                            <SelectTrigger className="bg-it-light-primary w-full">
                                                 <SelectValue placeholder="Select a district" />
                                             </SelectTrigger>
                                             <SelectContent>
@@ -277,9 +281,9 @@ const TutorProfile = ({ tutor }: { tutor: ITutor }) => {
                             />
                         </div>
                     </div>
-                    <div className="border-t border-b py-6 !my-10 space-y-4">
+                    <div className="border-t border-it-light-primary py-6 !my-10 space-y-4">
                         <div className="flex justify-between items-center">
-                            <p className="text-primary font-bold text-xl">
+                            <p className="text-it-medium-dark font-bold text-xl">
                                 Availabilities
                             </p>
                             <Button
@@ -294,78 +298,81 @@ const TutorProfile = ({ tutor }: { tutor: ITutor }) => {
                         <div className="space-y-5">
                             {availabilityFields.map(
                                 (availabilityField, index) => (
-                                    <div
-                                        key={availabilityField.id}
-                                        className="grid grid-cols-4 gap-x-4 w-full items-center"
-                                    >
-                                        <FormField
-                                            control={form.control}
-                                            name={`availability.${index}.day`}
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel className="font-bold">
-                                                        Day {index + 1}
-                                                    </FormLabel>
-                                                    <FormControl>
-                                                        <Input
-                                                            {...field}
-                                                            className="bg-white text-black"
-                                                            value={
-                                                                field.value ||
-                                                                ""
-                                                            }
-                                                        />
-                                                    </FormControl>
-                                                    <FormMessage className="text-red-500" />
-                                                </FormItem>
-                                            )}
-                                        ></FormField>
-                                        <FormField
-                                            control={form.control}
-                                            name={`availability.${index}.startTime`}
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel className="font-bold">
-                                                        Start Time {index + 1}
-                                                    </FormLabel>
-                                                    <FormControl>
-                                                        <Input
-                                                            {...field}
-                                                            className="bg-white text-black"
-                                                            value={
-                                                                field.value ||
-                                                                ""
-                                                            }
-                                                        />
-                                                    </FormControl>
-                                                    <FormMessage className="text-red-500" />
-                                                </FormItem>
-                                            )}
-                                        ></FormField>
-                                        <FormField
-                                            control={form.control}
-                                            name={`availability.${index}.endTime`}
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel className="font-bold">
-                                                        End Time {index + 1}
-                                                    </FormLabel>
-                                                    <FormControl>
-                                                        <Input
-                                                            {...field}
-                                                            className="bg-white text-black"
-                                                            value={
-                                                                field.value ||
-                                                                ""
-                                                            }
-                                                        />
-                                                    </FormControl>
-                                                    <FormMessage className="text-red-500" />
-                                                </FormItem>
-                                            )}
-                                        ></FormField>
+                                    <div key={availabilityField.id} className="flex flex-col lg:flex-row items-end gap-4">
+                                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 w-full items-center">
+                                            <FormField
+                                                control={form.control}
+                                                name={`availability.${index}.day`}
+                                                render={({ field }) => (
+                                                    <FormItem>
+                                                        <FormLabel className="font-bold">
+                                                            Day {index + 1}
+                                                        </FormLabel>
+                                                        <FormControl>
+                                                            <Input
+                                                                {...field}
+                                                                className="bg-it-light-primary text-black placeholder:text-gray-500"
+                                                                placeholder="Enter day"
+                                                                value={
+                                                                    field.value ||
+                                                                    ""
+                                                                }
+                                                            />
+                                                        </FormControl>
+                                                        <FormMessage className="text-red-500" />
+                                                    </FormItem>
+                                                )}
+                                            ></FormField>
+                                            <FormField
+                                                control={form.control}
+                                                name={`availability.${index}.startTime`}
+                                                render={({ field }) => (
+                                                    <FormItem>
+                                                        <FormLabel className="font-bold">
+                                                            Start Time{" "}
+                                                            {index + 1}
+                                                        </FormLabel>
+                                                        <FormControl>
+                                                            <Input
+                                                                {...field}
+                                                                className="bg-it-light-primary text-black placeholder:text-gray-500"
+                                                                placeholder="Enter start time"
+                                                                value={
+                                                                    field.value ||
+                                                                    ""
+                                                                }
+                                                            />
+                                                        </FormControl>
+                                                        <FormMessage className="text-red-500" />
+                                                    </FormItem>
+                                                )}
+                                            ></FormField>
+                                            <FormField
+                                                control={form.control}
+                                                name={`availability.${index}.endTime`}
+                                                render={({ field }) => (
+                                                    <FormItem>
+                                                        <FormLabel className="font-bold">
+                                                            End Time {index + 1}
+                                                        </FormLabel>
+                                                        <FormControl>
+                                                            <Input
+                                                                {...field}
+                                                                className="bg-it-light-primary text-black placeholder:text-gray-500"
+                                                                placeholder="Enter start time"
+                                                                value={
+                                                                    field.value ||
+                                                                    ""
+                                                                }
+                                                            />
+                                                        </FormControl>
+                                                        <FormMessage className="text-red-500" />
+                                                    </FormItem>
+                                                )}
+                                            ></FormField>
+                                        </div>{" "}
                                         <Button
-                                            className="max-w-12 hover:bg-it-medium-dark mt-auto"
+                                            className="max-w-12 bg-it-secondary hover:bg-it-medium-dark mt-auto"
                                             onClick={() =>
                                                 removeAvailability(index)
                                             }
@@ -384,13 +391,13 @@ const TutorProfile = ({ tutor }: { tutor: ITutor }) => {
                                     .NEXT_PUBLIC_RECAPTCHA_CLIENT_KEY as string
                             }
                             onChange={handleReCaptcha}
-                            className="mx-auto mt-5 mb-3"
+                            className="mt-5 mb-3"
                         />
                     </div>
                     <Button
                         disabled={reCaptchaStatus ? false : true}
                         type="submit"
-                        className="w-full !mt-5 hover:bg-it-light-dark"
+                        className="!mt-5 bg-it-secondary hover:bg-it-light-dark font-semibold px-6"
                     >
                         {isSubmitting
                             ? "Updating Profile..."

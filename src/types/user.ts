@@ -4,7 +4,9 @@ export interface IUser {
     name: string;
     email: string;
     isActive?: boolean;
-    role: "student" | "tutor";
+    role: "student" | "tutor" | "admin";
     iat?: number;
     exp?: number;
+    createdAt: Date;
+    updatedAt: Date;
 }

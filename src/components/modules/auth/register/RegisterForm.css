@@ -10,6 +10,7 @@
     border-radius: 20px;
     height: calc(100% + 10px);
     width: calc(100% + 10px);
-    background-color: hsl(var(--it-400));
+    background-color: hsl(var(--it-500));
+    box-shadow: 0 0 20px 1px hsl(var(--it-300));
     z-index: -1;
 }

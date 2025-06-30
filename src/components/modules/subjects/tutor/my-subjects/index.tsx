@@ -11,7 +11,7 @@ import moment from "moment";
 import { useState } from "react";
 import DeleteModal from "./DeleteModal";
 
-const ManageSubjects = ({
+const TutorManageSubjects = ({
     subjects,
     meta,
 }: {
@@ -176,4 +176,4 @@ const ManageSubjects = ({
     );
 };
 
-export default ManageSubjects;
+export default TutorManageSubjects;

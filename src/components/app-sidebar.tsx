@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { BookOpen, SquareActivity, StarIcon, Undo2 } from "lucide-react";
+import { BookOpen, SquareActivity, StarIcon, Undo2, Users } from "lucide-react";
 
 import { NavMain } from "@/components/nav-main";
 import { NavUser } from "@/components/nav-user";
@@ -25,6 +25,47 @@ export function AppSidebar({
 
     const data = {
         user,
+        adminNav: [
+            {
+                title: "Overview",
+                url: `/${user?.role}/dashboard`,
+                icon: SquareActivity,
+                isActive: true,
+                collapsible: false,
+            },
+            {
+                title: "Users",
+                url: `/${user?.role}/dashboard/users`,
+                icon: Users,
+                isActive: true,
+                collapsible: false,
+            },
+            {
+                title: "Bookings",
+                url: `/${user?.role}/dashboard/bookings`,
+                icon: SquareActivity,
+                isActive: true,
+                collapsible: false,
+            },
+            {
+                title: "Subjects",
+                url: `/${user?.role}/dashboard/subjects`,
+                icon: BookOpen,
+                collapsible: false,
+            },
+            {
+                title: "Reviews",
+                url: `/${user?.role}/dashboard/reviews`,
+                icon: StarIcon,
+                collapsible: false,
+            },
+            {
+                title: "Back to Home",
+                url: `/`,
+                icon: Undo2,
+                collapsible: false,
+            },
+        ],
         tutorNav: [
             {
                 title: "Overview",
@@ -114,7 +155,11 @@ export function AppSidebar({
             <SidebarContent className="bg-it-medium-dark">
                 <NavMain
                     items={
-                        user?.role === "tutor" ? data.tutorNav : data.studentNav
+                        user?.role === "admin"
+                            ? data.adminNav
+                            : user?.role === "tutor"
+                            ? data.tutorNav
+                            : data.studentNav
                     }
                 />
             </SidebarContent>

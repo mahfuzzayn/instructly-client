@@ -28,7 +28,7 @@ export const generateMetadata = async ({
                       booking?._id.length
                   )})`
                 : "Invalid Booking"
-        } ‣ Student Dashboard ‣ Instructly`,
+        } ‣ Tutor Dashboard ‣ Instructly`,
         description: `${
             booking?.createdAt
                 ? `Confirm your booking with tutor ${booking?.tutor?.user?.name}. Enhance your learning journey and achieve your academic goals.`
@@ -57,7 +57,7 @@ const TutorBookingPage = async ({
                     Booking ID:{" "}
                     <span className="font-semibold">{bookingId}</span>
                 </p>
-                <Link href="/student/dashboard/bookings">
+                <Link href="/tutor/dashboard/bookings">
                     <Button className="bg-it-secondary hover:bg-it-light-dark font-semibold mb-5">
                         <ArrowLeft /> Bookings
                     </Button>
@@ -68,7 +68,7 @@ const TutorBookingPage = async ({
 
     return (
         <div className="p-5">
-            <Link href={`/student/dashboard/bookings/`}>
+            <Link href={`/tutor/dashboard/bookings/`}>
                 <Button className="bg-it-secondary hover:bg-it-light-dark font-semibold mb-10">
                     <ArrowLeft /> Bookings
                 </Button>

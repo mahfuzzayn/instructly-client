@@ -23,6 +23,8 @@ import { loginSchema } from "./loginValidation";
 import { useUser } from "@/context/UserContext";
 import ReCAPTCHA from "react-google-recaptcha";
 import "./LoginForm.css";
+import Image from "next/image";
+import logo from "@/assets/images/logo_2.png";
 
 const LoginForm = () => {
     const { handleUser } = useUser();
@@ -81,12 +83,88 @@ const LoginForm = () => {
         }
     };
 
+    const handleLoadDemoCredentials = (role: "student" | "tutor" | "admin") => {
+        if (role === "student") {
+            form.setValue(
+                "email",
+                process.env.NEXT_PUBLIC_LOGIN_DEMO_STUDENT_EMAIL
+            );
+            form.setValue(
+                "password",
+                process.env.NEXT_PUBLIC_LOGIN_DEMO_STUDENT_PASSWORD
+            );
+
+            toast.success("Demo Student credentials has been filled.");
+        } else if (role === "tutor") {
+            form.setValue(
+                "email",
+                process.env.NEXT_PUBLIC_LOGIN_DEMO_TUTOR_EMAIL
+            );
+            form.setValue(
+                "password",
+                process.env.NEXT_PUBLIC_LOGIN_DEMO_TUTOR_PASSWORD
+            );
+
+            toast.success("Demo Tutor credentials has been filled.");
+        } else if (role === "admin") {
+            form.setValue(
+                "email",
+                process.env.NEXT_PUBLIC_LOGIN_DEMO_ADMIN_EMAIL
+            );
+            form.setValue(
+                "password",
+                process.env.NEXT_PUBLIC_LOGIN_DEMO_ADMIN_PASSWORD
+            );
+
+            toast.success("Demo Admin credentials has been filled.");
+        }
+    };
+
     return (
-        <div className="bg-white rounded-xl flex-grow max-w-md w-full p-5 login-form">
-            <div className="flex items-center space-x-4">
+        <div
+            className="rounded-xl text-it-medium-dark flex-grow max-w-md w-full p-5 login-form"
+            style={{
+                backgroundImage: `url('https://res.cloudinary.com/dvd0x20di/image/upload/v1751180451/blue-gradient-bg_jcmikh.jpg')`,
+            }}
+        >
+            <Link href="/" className="flex items-center gap-x-2">
+                <Image
+                    src={logo}
+                    height={40}
+                    width={40}
+                    alt="Instructly Logo"
+                />
+                <h2 className="text-2xl md:text-3xl text-it-medium-dark font-extrabold">
+                    Instructly
+                </h2>
+            </Link>
+            <div className="flex items-center space-x-4 mt-4">
                 <div className="space-y-1 mb-4">
-                    <h1 className="text-2xl font-bold">Login</h1>
-                    <p className="font-normal text-sm">Welcome back!</p>
+                    <h1 className="text-xl md:text-2xl font-bold">Login</h1>
+                    <p className="font-normal text-md">Welcome back!</p>
+                </div>
+            </div>
+            <div className="mb-4 relative">
+                <h2 className="font-semibold">Quick Login (Demo)</h2>
+                <div className="flex justify-between gap-3 mt-4">
+                    <button
+                        onClick={() => handleLoadDemoCredentials("student")}
+                        className="w-full bg-transparent text-it-secondary hover:bg-it-secondary hover:text-white font-semibold border-[1px] border-it-secondary px-2 py-1 rounded-md"
+                    >
+                        Student
+                    </button>
+                    <button
+                        onClick={() => handleLoadDemoCredentials("tutor")}
+                        className="w-full bg-transparent text-it-secondary hover:bg-it-secondary hover:text-white transition-all font-semibold border-[1px] border-it-secondary px-2 py-1 rounded-md"
+                    >
+                        Tutor
+                    </button>
+                    <button
+                        onClick={() => handleLoadDemoCredentials("admin")}
+                        className="w-full bg-transparent text-it-secondary hover:bg-it-secondary hover:text-white font-semibold border-[1px] border-it-secondary px-2 py-1 rounded-md"
+                    >
+                        Admin
+                    </button>
                 </div>
             </div>
             <Form {...form}>
@@ -105,6 +183,8 @@ const LoginForm = () => {
                                 <FormControl>
                                     <Input
                                         type="email"
+                                        className="bg-it-light-primary text-black placeholder:text-gray-500"
+                                        placeholder="Enter your email"
                                         {...field}
                                         value={field.value || ""}
                                     />
@@ -124,6 +204,8 @@ const LoginForm = () => {
                                 <FormControl>
                                     <Input
                                         type="password"
+                                        className="bg-it-light-primary text-black placeholder:text-gray-500"
+                                        placeholder="Enter your password"
                                         {...field}
                                         value={field.value || ""}
                                     />
@@ -145,26 +227,35 @@ const LoginForm = () => {
                     <Button
                         disabled={reCaptchaStatus ? false : true}
                         type="submit"
-                        className="w-full !mt-5 hover:bg-it-light-dark"
+                        className="w-full !mt-5 bg-it-secondary hover:bg-it-light-dark"
                     >
                         {isSubmitting ? "Logging..." : "Login"}
                     </Button>
                 </form>
-                <p className="text-sm text-gray-600 text-center mt-5 mb-3">
+                <p className="text-sm text-gray-800 text-center mt-5 mb-3">
                     Don't have any account?
                     <br />
-                    <Link href="/signup" className="text-primary">
+                    <Link
+                        href="/signup"
+                        className="text-it-medium-dark hover:underline font-medium"
+                    >
                         Sign Up
                     </Link>{" "}
                     as a Student or{" "}
-                    <Link href="/register" className="text-primary">
+                    <Link
+                        href="/register"
+                        className="text-it-medium-dark hover:underline font-medium"
+                    >
                         Register
                     </Link>{" "}
                     as a Tutor
                     <br />
                     <br />
                     Back to{" "}
-                    <Link href="/" className="text-primary">
+                    <Link
+                        href="/"
+                        className="text-it-medium-dark hover:underline font-medium"
+                    >
                         Home
                     </Link>
                 </p>

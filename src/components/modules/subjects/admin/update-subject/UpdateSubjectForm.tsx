@@ -37,7 +37,7 @@ import { updateSubject } from "@/services/Subject";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
-const UpdateSubjectForm = ({
+const UpdateSubjectFormByAdmin = ({
     tutor,
     subject,
 }: {
@@ -95,7 +95,7 @@ const UpdateSubjectForm = ({
 
     return (
         <div className="rounded-xl flex-grow w-full p-5 login-form">
-            <Link href={`/tutor/dashboard/subjects`}>
+            <Link href={`/admin/dashboard/subjects`}>
                 <Button className="bg-it-secondary hover:bg-it-light-dark font-semibold mb-10">
                     <ArrowLeft /> Subjects
                 </Button>
@@ -223,7 +223,7 @@ const UpdateSubjectForm = ({
                     <Button
                         disabled={reCaptchaStatus ? false : true}
                         type="submit"
-                        className="!mt-5 hover:bg-it-light-dark font-semibold px-6"
+                        className="!mt-5 bg-it-secondary hover:bg-it-light-dark font-semibold px-6"
                     >
                         {isSubmitting ? "Updating..." : "Update"}
                     </Button>
@@ -233,4 +233,4 @@ const UpdateSubjectForm = ({
     );
 };
 
-export default UpdateSubjectForm;
+export default UpdateSubjectFormByAdmin;

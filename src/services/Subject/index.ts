@@ -29,10 +29,26 @@ export const createSubject = async (subjectData: FieldValues) => {
     }
 };
 
-export const getAllSubjects = async () => {
+export const getAllSubjects = async (
+    page?: string,
+    limit?: string,
+    query?: {
+        [key: string]: string | string[] | undefined;
+    }
+) => {
+    const params = new URLSearchParams();
+
+    if (query?.category) {
+        params.append("category", query?.category.toString());
+    }
+
+    if (query?.gradeLevel) {
+        params.append("gradeLevel", query?.gradeLevel.toString());
+    }
+
     try {
         const res = await fetch(
-            `${process.env.NEXT_PUBLIC_BASE_API}/subjects`,
+            `${process.env.NEXT_PUBLIC_BASE_API}/subjects?limit=${limit}&page=${page}&${params}&sort=-createdAt`,
             {
                 method: "GET",
                 next: {

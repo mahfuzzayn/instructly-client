@@ -3,7 +3,7 @@
 
 import { getValidToken } from "@/lib/verifyToken";
 
-export const updateStudentProfile = async (tutorData: FormData) => {
+export const updateStudentProfile = async (studentData: FormData) => {
     const token = await getValidToken();
 
     try {
@@ -14,7 +14,7 @@ export const updateStudentProfile = async (tutorData: FormData) => {
                 headers: {
                     Authorization: token,
                 },
-                body: tutorData,
+                body: studentData,
                 next: {
                     tags: ["USER"],
                 },

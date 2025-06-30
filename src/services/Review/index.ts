@@ -8,6 +8,7 @@ export type ReviewFormData = {
     comment: string;
 };
 
+// Student Function
 export const giveReview = async (reviewData: ReviewFormData) => {
     const token = await getValidToken();
 
@@ -32,6 +33,7 @@ export const giveReview = async (reviewData: ReviewFormData) => {
     }
 };
 
+// Tutor & Student Function
 export const getMyReviews = async (limit?: string, page?: string) => {
     const token = await getValidToken();
 
@@ -57,12 +59,39 @@ export const getMyReviews = async (limit?: string, page?: string) => {
     }
 };
 
+// Tutor & Student Function
 export const getSingleReview = async (reviewId: string) => {
     const token = await getValidToken();
 
     try {
         const res = await fetch(
             `${process.env.NEXT_PUBLIC_BASE_API}/reviews/${reviewId}`,
+            {
+                method: "GET",
+                headers: {
+                    Authorization: token,
+                },
+                next: {
+                    tags: ["REVIEW"],
+                },
+            }
+        );
+
+        const result = await res.json();
+
+        return result;
+    } catch (error: any) {
+        return Error(error);
+    }
+};
+
+// Admin Function
+export const getAllReviews = async (limit?: string, page?: string) => {
+    const token = await getValidToken();
+
+    try {
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_API}/reviews?limit=${limit}&page=${page}&sort=-createdAt`,
             {
                 method: "GET",
                 headers: {

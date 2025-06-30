@@ -25,6 +25,8 @@ import { signupSchema } from "./signupValidation";
 import { useUser } from "@/context/UserContext";
 import ReCAPTCHA from "react-google-recaptcha";
 import "./SignupForm.css";
+import Image from "next/image";
+import logo from "@/assets/images/logo_2.png";
 
 const SignupForm = () => {
     const { handleUser } = useUser();
@@ -74,7 +76,7 @@ const SignupForm = () => {
             if (res?.success) {
                 handleUser();
                 toast.success("Sign Up completed successfully!");
-                
+
                 if (redirect) {
                     router.push(redirect);
                 } else {
@@ -89,11 +91,27 @@ const SignupForm = () => {
     };
 
     return (
-        <div className="bg-white rounded-xl flex-grow max-w-md w-full p-5 signup-form">
-            <div className="flex items-center space-x-4">
+        <div
+            className="rounded-xl text-it-medium-dark flex-grow max-w-md w-full p-5 signup-form"
+            style={{
+                backgroundImage: `url('https://res.cloudinary.com/dvd0x20di/image/upload/v1751180451/blue-gradient-bg_jcmikh.jpg')`,
+            }}
+        >
+            <Link href="/" className="flex items-center gap-x-2">
+                <Image
+                    src={logo}
+                    height={40}
+                    width={40}
+                    alt="Instructly Logo"
+                />
+                <h2 className="text-2xl md:text-3xl text-it-medium-dark font-extrabold">
+                    Instructly
+                </h2>
+            </Link>
+            <div className="flex items-center space-x-4 mt-4">
                 <div className="space-y-1 mb-4">
-                    <h1 className="text-2xl font-bold">Sign Up</h1>
-                    <p className="font-normal text-sm">
+                    <h1 className="text-xl md:text-2xl font-bold">Sign Up</h1>
+                    <p className="font-normal text-md">
                         Fill up the form and be a Student!
                     </p>
                 </div>
@@ -115,6 +133,8 @@ const SignupForm = () => {
                                     <Input
                                         type="text"
                                         {...field}
+                                        className="bg-it-light-primary text-black placeholder:text-gray-500"
+                                        placeholder="Enter your name"
                                         value={field.value || ""}
                                     />
                                 </FormControl>
@@ -134,6 +154,8 @@ const SignupForm = () => {
                                     <Input
                                         type="email"
                                         {...field}
+                                        className="bg-it-light-primary text-black placeholder:text-gray-500"
+                                        placeholder="Enter your email"
                                         value={field.value || ""}
                                     />
                                 </FormControl>
@@ -153,6 +175,8 @@ const SignupForm = () => {
                                     <Input
                                         type="password"
                                         {...field}
+                                        className="bg-it-light-primary text-black placeholder:text-gray-500"
+                                        placeholder="Enter your password"
                                         value={field.value || ""}
                                     />
                                 </FormControl>
@@ -173,14 +197,17 @@ const SignupForm = () => {
                     <Button
                         disabled={reCaptchaStatus ? false : true}
                         type="submit"
-                        className="w-full !mt-5 hover:bg-it-light-dark"
+                        className="w-full !mt-5 bg-it-secondary hover:bg-it-light-dark"
                     >
                         {isSubmitting ? "Signing Up..." : "Sign Up"}
                     </Button>
                 </form>
-                <p className="text-sm text-gray-600 text-center mt-5 mb-3">
+                <p className="text-sm text-gray-800 text-center mt-5 mb-3">
                     Already have an account?{" "}
-                    <Link href="/login" className="text-primary">
+                    <Link
+                        href="/login"
+                        className="text-it-medium-dark hover:underline font-medium"
+                    >
                         Login
                     </Link>
                 </p>

@@ -1,4 +1,4 @@
-import CreateSubjectForm from "@/components/modules/subjects/create-subject/CreateSubjectForm";
+import CreateSubjectForm from "@/components/modules/subjects/tutor/create-subject/CreateSubjectForm";
 import { getMe } from "@/services/AuthService";
 import { Metadata } from "next";
 import React from "react";

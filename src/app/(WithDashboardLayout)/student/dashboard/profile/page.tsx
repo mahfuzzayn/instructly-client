@@ -16,13 +16,18 @@ const ProfilePage = async () => {
     const { data: subjects } = await getAllSubjects();
 
     return (
-        <main className="space-y-2 m-5">
-            <h2 className="text-3xl font-bold text-center">
-                Welcome, {student?.user?.name}
-            </h2>
-            <p className="text-center">
-                Manage your student profile settings here!
-            </p>
+        <main className="flex flex-col items-start space-y-2 m-5">
+            <div className="space-y-2 p-5 pb-0">
+                <h2 className="text-3xl font-bold">
+                    Welcome,{" "}
+                    <span className="text-it-medium-dark">
+                        {student?.user?.name}
+                    </span>
+                </h2>
+                <p className="text-md">
+                    Manage your student profile settings here!
+                </p>
+            </div>
             <StudentProfile student={student} subjects={subjects} />
         </main>
     );

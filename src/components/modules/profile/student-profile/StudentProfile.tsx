@@ -125,8 +125,8 @@ const StudentProfile = ({
     };
 
     return (
-        <div className="rounded-xl flex-grow max-w-md w-full mx-auto p-5 login-form">
-            <div className="flex justify-center mb-5">
+        <div className="rounded-xl flex-grow w-full mx-auto p-5 login-form">
+            <div className="flex justify-start mb-5">
                 {imagePreview ? (
                     <ImagePreviewer
                         className="flex flex-wrap gap-4"
@@ -159,7 +159,8 @@ const StudentProfile = ({
                                 <FormControl>
                                     <Input
                                         type="text"
-                                        className="bg-white text-black"
+                                        className="bg-it-light-primary text-black placeholder:text-gray-500"
+                                        placeholder="Enter your name"
                                         {...field}
                                         value={field.value || ""}
                                     />
@@ -177,7 +178,8 @@ const StudentProfile = ({
                                 <FormControl>
                                     <Input
                                         type="text"
-                                        className="bg-white text-black"
+                                        className="bg-it-light-primary text-black placeholder:text-gray-500"
+                                        placeholder="Enter your bio"
                                         {...field}
                                         value={field.value || ""}
                                     />
@@ -196,7 +198,7 @@ const StudentProfile = ({
                                     onValueChange={field.onChange}
                                     value={field.value}
                                 >
-                                    <SelectTrigger className="mt-2 bg-white w-full">
+                                    <SelectTrigger className="mt-2 bg-it-light-primary w-full">
                                         <SelectValue placeholder="Select a grade" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -229,7 +231,7 @@ const StudentProfile = ({
                                         subjectsOfInterest.find((subjectId) => {
                                             return subjectId === subject?._id;
                                         })
-                                            ? "bg-it-primary"
+                                            ? "bg-it-secondary"
                                             : "bg-gray-500"
                                     } text-white pl-2 rounded-md font-semibold list-none`}
                                     key={index}
@@ -274,13 +276,13 @@ const StudentProfile = ({
                                     .NEXT_PUBLIC_RECAPTCHA_CLIENT_KEY as string
                             }
                             onChange={handleReCaptcha}
-                            className="mx-auto mt-5 mb-3"
+                            className="mt-5 mb-3"
                         />
                     </div>
                     <Button
                         disabled={reCaptchaStatus ? false : true}
                         type="submit"
-                        className="w-full !mt-5 hover:bg-it-light-dark"
+                        className="!mt-5 bg-it-secondary hover:bg-it-light-dark font-semibold px-6"
                     >
                         {isSubmitting
                             ? "Updating Profile..."

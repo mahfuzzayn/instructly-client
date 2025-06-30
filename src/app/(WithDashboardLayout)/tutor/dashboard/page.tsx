@@ -61,11 +61,11 @@ const TutorDashboardPage = async () => {
                         </Link>
                     </h2>
                     {tutor?.subjects.length > 0 ? (
-                        <ul className="flex flex-wrap gap-5">
+                        <ul className="flex flex-wrap gap-4">
                             {subjects.map((subject, idx) => (
                                 <li
                                     key={idx}
-                                    className="text-lg font-extrabold"
+                                    className="bg-it-secondary px-2 py-0.5 text-white rounded-md text-md font-semibold"
                                 >
                                     {subject?.name}
                                 </li>

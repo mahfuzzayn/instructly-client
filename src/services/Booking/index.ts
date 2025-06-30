@@ -163,3 +163,30 @@ export const initiatePayment = async (bookingId: string) => {
         return Error(error);
     }
 };
+
+// Admin Function
+export const getAllBookings = async (limit?: string, page?: string) => {
+    const token = await getValidToken();
+
+    try {
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_API}/bookings?limit=${limit}&page=${page}&sort=-createdAt`,
+            {
+                method: "GET",
+                headers: {
+                    Authorization: token,
+                },
+                next: {
+                    tags: ["BOOKING"],
+                },
+            }
+        );
+
+        const result = await res.json();
+
+        return result;
+    } catch (error: any) {
+        return Error(error);
+    }
+};
+

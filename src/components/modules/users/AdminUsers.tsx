@@ -2,7 +2,7 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { IMeta, IUser } from "@/types";
+import { IAdmin, IMeta, IStudent, ITutor, IUser } from "@/types";
 import { ITTable } from "@/components/ui/core/ITTable";
 import TablePagination from "@/components/ui/core/ITTable/TablePagination";
 import moment from "moment";
@@ -10,8 +10,21 @@ import { Button } from "@/components/ui/button";
 import { UserCheck, UserX } from "lucide-react";
 import { toast } from "sonner";
 import { updateUserStatus } from "@/services/Admin";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-const AdminUsers = ({ users, meta }: { users: IUser[]; meta: IMeta }) => {
+const AdminUsers = ({
+    users,
+    students,
+    tutors,
+    admins,
+    meta,
+}: {
+    users: IUser[];
+    students: IStudent[];
+    tutors: ITutor[];
+    admins: IAdmin[];
+    meta: IMeta;
+}) => {
     const handleUserUpdateByAdmin = async (
         userId: string,
         status: "activate" | "deactivate"
@@ -41,6 +54,50 @@ const AdminUsers = ({ users, meta }: { users: IUser[]; meta: IMeta }) => {
     };
 
     const columns: ColumnDef<IUser>[] = [
+        {
+            accessorKey: "profileUrl",
+            header: "Picture",
+            cell: ({ row }) => {
+                return (
+                    <div className="flex items-center space-x-3">
+                        <Avatar className="h-12 w-12 rounded-lg">
+                            <AvatarImage
+                                src={
+                                    row?.original?.role === "student"
+                                        ? students.find(
+                                              (student) =>
+                                                  student?.user?._id ===
+                                                  row?.original?._id
+                                          )?.profileUrl
+                                        : row?.original?.role === "tutor"
+                                        ? tutors.find(
+                                              (tutor) =>
+                                                  tutor?.user?._id ===
+                                                  row?.original?._id
+                                          )?.profileUrl
+                                        : admins.find(
+                                              (admin) =>
+                                                  admin?.user?._id ===
+                                                  row?.original?._id
+                                          )?.profileUrl
+                                }
+                                height={120}
+                                width={120}
+                                className="pointer-events-none select-none"
+                                alt={row?.original?.name}
+                            />
+                            <AvatarFallback className="bg-it-light-dark rounded-lg text-white font-bold">
+                                {row?.original?.name
+                                    ?.split(" ")
+                                    .slice(0, 2)
+                                    .map((name) => name[0])
+                                    .join("")}
+                            </AvatarFallback>
+                        </Avatar>
+                    </div>
+                );
+            },
+        },
         {
             accessorKey: "name",
             header: "Name",

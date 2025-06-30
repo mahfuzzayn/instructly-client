@@ -116,7 +116,7 @@ const TutorOverview = ({ tutor }: { tutor: ITutor }) => {
             >
                 <h2 className="text-2xl font-normal">
                     <Link
-                        href={`/student/dashboard/bookings`}
+                        href={`/tutor/dashboard/bookings`}
                         className="hover:underline hover:text-it-destructive"
                     >
                         Bookings
@@ -151,6 +151,10 @@ const TutorOverview = ({ tutor }: { tutor: ITutor }) => {
                         </BarChart>
                     </ChartContainer>
                 </div>
+                <p className="text-sm !mt-4">
+                    <span className="font-semibold">Note:</span> This chart
+                    shows student bookings from you in months.
+                </p>
             </div>
             <div
                 className="w-full rounded-md p-5 space-y-2 border-[1px] border-[#fffff350]"
@@ -160,7 +164,7 @@ const TutorOverview = ({ tutor }: { tutor: ITutor }) => {
             >
                 <h2 className="text-2xl font-normal">
                     <Link
-                        href={`/student/dashboard/reviews`}
+                        href={`/tutor/dashboard/reviews`}
                         className="hover:underline hover:text-it-destructive"
                     >
                         Reviews
@@ -187,6 +191,10 @@ const TutorOverview = ({ tutor }: { tutor: ITutor }) => {
                         </PieChart>
                     </ChartContainer>
                 </div>
+                <p className="text-sm !mt-4">
+                    <span className="font-semibold">Note:</span> This chart
+                    shows reviews you recevied in week from students.
+                </p>
             </div>
         </>
     );

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 
@@ -17,6 +18,38 @@ export const updateAdminProfile = async (adminData: FormData) => {
                     Authorization: token,
                 },
                 body: adminData,
+                next: {
+                    tags: ["USER"],
+                },
+            }
+        );
+
+        const result = await res.json();
+
+        return result;
+    } catch (error: any) {
+        return Error(error);
+    }
+};
+
+export const getAllAdmins = async (
+    page?: string,
+    limit?: string,
+    query?: {
+        [key: string]: string | string[] | undefined;
+    }
+) => {
+    const token = await getValidToken();
+    const params = new URLSearchParams();
+
+    try {
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_API}/admins?limit=${limit}&page=${page}&${params}&sort=-createdAt`,
+            {
+                method: "GET",
+                headers: {
+                    Authorization: token,
+                },
                 next: {
                     tags: ["USER"],
                 },

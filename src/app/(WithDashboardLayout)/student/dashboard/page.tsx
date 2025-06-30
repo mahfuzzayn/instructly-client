@@ -40,6 +40,36 @@ const StudentDashboardPage = async () => {
                     </p>
                 </div>
             </section>
+            <section className="flex gap-5 w-full">
+                <div
+                    className="w-full rounded-md p-5 space-y-4 border-[1px] border-[#fffff350]"
+                    style={{
+                        backgroundImage: `url('https://res.cloudinary.com/dvd0x20di/image/upload/v1751180451/blue-gradient-bg_jcmikh.jpg')`,
+                    }}
+                >
+                    <h2 className="text-2xl font-normal">
+                        Subjects of Interests
+                    </h2>
+                    {student?.subjectsOfInterest.length > 0 ? (
+                        <ul className="flex flex-wrap gap-4">
+                            {student?.subjectsOfInterest.map((subject, idx) => (
+                                <li
+                                    key={idx}
+                                    className="bg-it-secondary px-2 py-0.5 text-white rounded-md text-md font-semibold"
+                                >
+                                    {subject?.name}
+                                </li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <p className="mt-2">
+                            <i className="font-semibold">
+                                You don't have any subjects of interets.
+                            </i>
+                        </p>
+                    )}
+                </div>
+            </section>
         </main>
     );
 };

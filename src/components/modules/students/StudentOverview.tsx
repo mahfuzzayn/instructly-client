@@ -151,6 +151,10 @@ const StudentOverview = ({ student }: { student: IStudent }) => {
                         </BarChart>
                     </ChartContainer>
                 </div>
+                <p className="text-sm !mt-4">
+                    <span className="font-semibold">Note:</span> This chart
+                    shows your bookings in months.
+                </p>
             </div>
             <div
                 className="w-full rounded-md p-5 space-y-2 border-[1px] border-[#fffff350]"
@@ -187,6 +191,10 @@ const StudentOverview = ({ student }: { student: IStudent }) => {
                         </PieChart>
                     </ChartContainer>
                 </div>
+                <p className="text-sm !mt-4">
+                    <span className="font-semibold">Note:</span> This chart
+                    shows reviews you have recevied in week.
+                </p>
             </div>
         </>
     );

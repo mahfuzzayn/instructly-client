@@ -1,6 +1,8 @@
 import AdminUsers from "@/components/modules/users/AdminUsers";
-import { getAllUsers } from "@/services/Admin";
-import { IMeta, IUser } from "@/types";
+import { getAllAdmins, getAllUsers } from "@/services/Admin";
+import { getAllStudents } from "@/services/Student";
+import { getAllTutors } from "@/services/Tutor";
+import { IAdmin, IMeta, IStudent, ITutor, IUser } from "@/types";
 import { Metadata } from "next";
 import React from "react";
 
@@ -17,8 +19,19 @@ const AdminUsersPage = async ({
     const { page } = await searchParams;
     const { data: users, meta }: { data: IUser[]; meta: IMeta } =
         await getAllUsers("10", page);
+    const { data: students }: { data: IStudent[] } = await getAllStudents();
+    const { data: tutors }: { data: ITutor[] } = await getAllTutors();
+    const { data: admins }: { data: IAdmin[] } = await getAllAdmins();
 
-    return <AdminUsers users={users} meta={meta} />;
+    return (
+        <AdminUsers
+            users={users}
+            students={students}
+            tutors={tutors}
+            admins={admins}
+            meta={meta}
+        />
+    );
 };
 
 export default AdminUsersPage;

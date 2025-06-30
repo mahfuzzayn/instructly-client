@@ -242,6 +242,7 @@ const StudentProfile = ({
                                             subjectId === subject?._id
                                     ) ? (
                                         <Button
+                                            type="button"
                                             className="bg-red-500 hover:bg-red-700"
                                             onClick={() =>
                                                 handleAddSubjectOfInterest(
@@ -254,6 +255,7 @@ const StudentProfile = ({
                                         </Button>
                                     ) : (
                                         <Button
+                                            type="button"
                                             className="hover:bg-it-secondary"
                                             onClick={() =>
                                                 handleAddSubjectOfInterest(

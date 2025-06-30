@@ -48,7 +48,7 @@ export function ITTable<TData, TValue>({
                             {headerGroup.headers.map((header) => {
                                 return (
                                     <TableHead
-                                        className="font-bold text-white"
+                                        className="py-2 xl:py-0 font-bold text-[15px] text-white"
                                         key={header.id}
                                     >
                                         {header.isPlaceholder
@@ -72,7 +72,7 @@ export function ITTable<TData, TValue>({
                                 data-state={row.getIsSelected() && "selected"}
                             >
                                 {row.getVisibleCells().map((cell) => (
-                                    <TableCell key={cell.id}>
+                                    <TableCell key={cell.id} className="text-[15px] font-medium">
                                         {flexRender(
                                             cell.column.columnDef.cell,
                                             cell.getContext()

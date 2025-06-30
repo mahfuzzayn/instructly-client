@@ -2,7 +2,7 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import { Edit, Plus, Trash } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { IMeta, ISubject } from "@/types";
 import { ITTable } from "@/components/ui/core/ITTable";
@@ -21,6 +21,26 @@ const ManageSubjects = ({
     const router = useRouter();
     const [selectedSubject, setSelectedSubject] = useState("");
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
+
+    const handleSearchQuery = (
+        query: string,
+        value: string | number,
+        remove?: boolean
+    ) => {
+        const params = new URLSearchParams(searchParams.toString());
+
+        if (!remove) {
+            params.set(query, value.toString());
+        } else {
+            params.delete(query);
+        }
+
+        router.push(`${pathname}?${params.toString()}`, {
+            scroll: false,
+        });
+    };
 
     const columns: ColumnDef<ISubject>[] = [
         {
@@ -43,7 +63,25 @@ const ManageSubjects = ({
         },
         {
             accessorKey: "gradeLevel",
-            header: "Grade level",
+            header: ({ column }) => (
+                <button
+                    onClick={() => {
+                        column.toggleSorting();
+
+                        if (column.getIsSorted() === "asc") {
+                            handleSearchQuery("sort", "-gradeLevel");
+                        } else if (column.getIsSorted() === "desc") {
+                            handleSearchQuery("sort", "", true);
+                        } else {
+                            handleSearchQuery("sort", "gradeLevel");
+                        }
+                    }}
+                >
+                    Grade Level
+                    {column.getIsSorted() === "asc" && "🔼"}
+                    {column.getIsSorted() === "desc" && "🔽"}
+                </button>
+            ),
             cell: ({ row }) => (
                 <div className="flex items-center space-x-3">
                     <span className="truncate">{row.original.gradeLevel}</span>
@@ -110,7 +148,9 @@ const ManageSubjects = ({
     return (
         <div className="m-5">
             <div className="flex items-center justify-between mb-4">
-                <h1 className="text-2xl text-it-medium-dark font-bold">Manage Subjects</h1>
+                <h1 className="text-2xl text-it-medium-dark font-bold">
+                    Manage Subjects
+                </h1>
                 <div className="flex items-center gap-2">
                     <Button
                         onClick={() =>

@@ -107,7 +107,7 @@ const ManageStudentBookings = ({
             cell: ({ row }) => (
                 <div className="flex items-center space-x-3">
                     <Button
-                        className="text-white bg-it-medium-primary hover:bg-it-primary"
+                        className="text-white hover:bg-it-light-dark"
                         title="View"
                         onClick={() =>
                             router.push(

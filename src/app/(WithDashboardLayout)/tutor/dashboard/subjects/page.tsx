@@ -12,10 +12,14 @@ export const metadata: Metadata = {
 const SubjectsPage = async ({
     searchParams,
 }: {
-    searchParams: Promise<{ page: string }>;
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) => {
-    const { page } = await searchParams;
-    const { data: subjects, meta } = await getMySubjects(page, "5");
+    const query = await searchParams;
+    const { data: subjects, meta } = await getMySubjects(
+        query?.page as string,
+        "5",
+        query
+    );
 
     return (
         <>

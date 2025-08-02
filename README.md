@@ -4,7 +4,7 @@
 
 ## **Project Overview**
 
-Instructly Client is a dynamic educational platform built with Next.js, enabling students to find tutors, book sessions, and manage their learning. Tutors can create profiles, list subjects, and manage availability. The platform supports admin features for user management and content oversight (if implemented). With TypeScript, Tailwind CSS, and NextAuth for secure authentication, Instructly ensures scalability, responsiveness, and a seamless user experience, with data managed via MongoDB.
+Instructly Client is a dynamic educational platform built with Next.js, enabling students to find tutors, book sessions, and manage their learning. Tutors can create profiles, list subjects, and manage availability. The platform supports admin features for user management and content oversight (if implemented). With TypeScript, Tailwind CSS, and Custom secure authentication, Instructly ensures scalability, responsiveness, and a seamless user experience, with data managed via MongoDB.
 
 ## **Tech Stack**
 

@@ -9,11 +9,11 @@ Instructly Client is a dynamic educational platform built with Next.js, enabling
 ## **Tech Stack**
 
 -   **Frontend Framework:** NextJS (React + TypeScript)
--   **State Management:** Redux Toolkit
 -   **UI Library:** Shadcn & Tailwind CSS
 -   **Routing:** NextJS Pages Router
--   **API Requests:** RTK Query
--   **Authentication:** NextAuth
+-   **API Requests:** NextJS Built-in Functionalities
+-   **Authentication:** Custom Secured Authentication
+-   **Payment Gateway:** SSLCommerz
 
 ## **Getting Started**
 
